@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: theme("colors.paper");
+  color: theme("colors.ink");
+  font-family: theme("fontFamily.sans");
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(214, 69, 15, 0.18);
+}
+
+/* Prose styling for article + legal bodies */
+.prose-em {
+  max-width: theme("maxWidth.prose");
+}
+.prose-em h2 {
+  font-family: theme("fontFamily.display");
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+.prose-em h3 {
+  font-family: theme("fontFamily.display");
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.prose-em p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #2c2824;
+}
+.prose-em ul,
+.prose-em ol {
+  margin: 0.5rem 0 1.25rem 1.25rem;
+  line-height: 1.7;
+}
+.prose-em ul {
+  list-style: disc;
+}
+.prose-em ol {
+  list-style: decimal;
+}
+.prose-em li {
+  margin-bottom: 0.4rem;
+  padding-left: 0.25rem;
+}
+.prose-em a {
+  color: theme("colors.ember.600");
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+.prose-em a:hover {
+  color: theme("colors.ember.700");
+}
+.prose-em strong {
+  font-weight: 700;
+  color: theme("colors.ink");
+}
+.prose-em table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.93rem;
+}
+.prose-em th,
+.prose-em td {
+  border: 1px solid theme("colors.line");
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-em thead th {
+  background: #f3ede2;
+  font-weight: 700;
+}
+.prose-em tbody tr:nth-child(even) {
+  background: #fbf8f3;
+}
+
+@layer components {
+  .inp {
+    @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus:border-ember-600;
+  }
+}
