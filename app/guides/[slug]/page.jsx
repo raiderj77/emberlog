@@ -65,6 +65,21 @@ export default function ArticlePage({ params }) {
   const faqLd = a.faqs?.length
     ? { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: a.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }
     : null;
+  const howToLd = a.steps?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: a.title,
+        description: a.description,
+        ...(a.howToTime && { totalTime: a.howToTime }),
+        step: a.steps.map((s, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: s.name,
+          text: s.text,
+        })),
+      }
+    : null;
   const crumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -79,6 +94,7 @@ export default function ArticlePage({ params }) {
     <>
       <JsonLd data={articleLd} />
       {faqLd && <JsonLd data={faqLd} />}
+      {howToLd && <JsonLd data={howToLd} />}
       <JsonLd data={crumbLd} />
       <Container className="py-10">
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Guides", href: "/guides/" }, { label: a.title.replace(/:.*$/, "") }]} />
