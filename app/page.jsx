@@ -16,10 +16,10 @@ import { Container, SectionLabel, FaqList, ICONS } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 
 const HOME_FAQS = [
-  { q: "Is the EmberLog cook log free?", a: "Yes. The cook log and all of the calculators are free to use. There is no account to create and nothing to install, though you can install it as an app on your phone if you like." },
-  { q: "Do I need a special thermometer or hardware?", a: "No. EmberLog is hardware-agnostic. You can log temperatures from any thermometer or controller by hand, and log multiple meats and probes per cook. It is not tied to any brand of device." },
+  { q: "Is the Pitmaster Log cook log free?", a: "Yes. The cook log and all of the calculators are free to use. There is no account to create and nothing to install, though you can install it as an app on your phone if you like." },
+  { q: "Do I need a special thermometer or hardware?", a: "No. Pitmaster Log is hardware-agnostic. You can log temperatures from any thermometer or controller by hand, and log multiple meats and probes per cook. It is not tied to any brand of device." },
   { q: "Where is my cook data stored?", a: "On your own device, in your browser. Your logs are never uploaded to a server, and you can export your entire history to a CSV file at any time." },
-  { q: "Does it work on iPhone and Android?", a: "Yes. EmberLog runs in any modern web browser on iPhone, Android, tablet, or computer, and can be added to your home screen to run like an app, including offline." },
+  { q: "Does it work on iPhone and Android?", a: "Yes. Pitmaster Log runs in any modern web browser on iPhone, Android, tablet, or computer, and can be added to your home screen to run like an app, including offline." },
 ];
 
 export default function HomePage() {
@@ -108,13 +108,13 @@ export default function HomePage() {
       {/* Why it's different */}
       <section className="py-16">
         <Container>
-          <SectionLabel>Why EmberLog</SectionLabel>
+          <SectionLabel>Why Pitmaster Log</SectionLabel>
           <h2 className="max-w-2xl font-display text-3xl font-bold tracking-tight">
             Most cook loggers are locked to a $250 gadget. This one isn't.
           </h2>
           <p className="mt-3 max-w-2xl text-muted">
             The best logging features today are buried inside hardware ecosystems, or stuck on a
-            single app store. EmberLog is the opposite: open on the web, brand-agnostic, and built
+            single app store. Pitmaster Log is the opposite: open on the web, brand-agnostic, and built
             to log the way you actually cook.
           </p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -123,7 +123,7 @@ export default function HomePage() {
               { icon: Smartphone, title: "Any device, no install", body: "Runs in the browser on iPhone, Android, tablet, or laptop. Add it to your home screen to run like a native app." },
               { icon: ShieldCheck, title: "Your data stays yours", body: "Everything is stored on your device, never uploaded. Export your full history to CSV whenever you want. No lock-in." },
               { icon: Flame, title: "Hardware-agnostic", body: "Use any thermometer or controller. Type readings in by hand or paste them. You are never tied to one brand." },
-              { icon: WifiOff, title: "Works at the pit", body: "Backyards have bad wifi. EmberLog keeps working offline once loaded, so a dropped signal never loses your cook." },
+              { icon: WifiOff, title: "Works at the pit", body: "Backyards have bad wifi. Pitmaster Log keeps working offline once loaded, so a dropped signal never loses your cook." },
               { icon: CheckCircle2, title: "Free, genuinely", body: "The log and every calculator are free. No paywall on the core tools, no trial countdown." },
             ].map((f) => (
               <div key={f.title} className="rounded-xl border border-line bg-white p-5 shadow-card">

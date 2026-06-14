@@ -8,7 +8,7 @@ export const metadata = {
   description:
     "A free, hardware-agnostic BBQ cook log. Track multiple meats and probes, chart the temperature curve, log your timeline, and export to CSV. No account, works offline, data stays on your device.",
   alternates: { canonical: "/log/" },
-  openGraph: {
+  openGraph: { images: ["/og.png"],
     title: `Free BBQ Cook Log · ${SITE.name}`,
     description:
       "Track multiple meats and probes, chart the temperature curve, and export your data. Free, no account, works on any device.",

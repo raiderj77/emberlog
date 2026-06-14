@@ -1,5 +1,5 @@
-// EmberLog service worker — simple offline shell cache.
-const CACHE = "emberlog-v1";
+// Pitmaster Log service worker — simple offline shell cache.
+const CACHE = "pitmasterlog-v1";
 const SHELL = ["/", "/log/", "/tools/", "/guides/", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {

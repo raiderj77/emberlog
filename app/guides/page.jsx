@@ -10,7 +10,7 @@ export const metadata = {
   description:
     "Practical, no-fluff BBQ guides: brisket timing, smoker temperatures, doneness temps, wood pairing, dry brining, the stall, and a beginner's first smoke. Straight answers backed by USDA food-safety guidance.",
   alternates: { canonical: "/guides/" },
-  openGraph: { title: `BBQ & Smoking Guides · ${SITE.name}`, description: "Straight-answer guides to smoking meat, from brisket timing to wood pairing.", url: "/guides/" },
+  openGraph: { images: ["/og.png"], title: `BBQ & Smoking Guides · ${SITE.name}`, description: "Straight-answer guides to smoking meat, from brisket timing to wood pairing.", url: "/guides/" },
 };
 
 export default function GuidesPage() {

@@ -47,7 +47,7 @@ export default function CookLog() {
   function removeCook(id) { setCooks((cs) => cs.filter((c) => c.id !== id)); setView({ mode: "list" }); }
 
   function exportJSON() {
-    downloadBlob(new Blob([JSON.stringify({ app: "EmberLog", version: 1, cooks }, null, 2)], { type: "application/json" }), "emberlog-backup.json");
+    downloadBlob(new Blob([JSON.stringify({ app: "Pitmaster Log", version: 1, cooks }, null, 2)], { type: "application/json" }), "emberlog-backup.json");
   }
   function exportCSV() {
     const head = ["cook", "protein", "weight", "unit", "cooker", "wood", "target_temp", "reading_time", "elapsed_min", "probe", "temp"];
@@ -76,7 +76,12 @@ export default function CookLog() {
     r.readAsText(file);
   }
 
-  if (!loaded) return <div className="py-24 text-center text-muted">Loading your cooks…</div>;
+  if (!loaded) return (
+    <div>
+      <h1 className="font-display text-3xl font-bold tracking-tight">Your cook log</h1>
+      <p className="mt-3 text-muted">Loading your cooks…</p>
+    </div>
+  );
   if (current) return <CookDetail cook={current} onBack={() => setView({ mode: "list" })} update={update} removeCook={removeCook} />;
 
   return (
@@ -158,7 +163,7 @@ function CookDetail({ cook, onBack, update, removeCook }) {
 
   function copyCard() {
     const L = [];
-    L.push(`🔥 ${cook.name || cook.protein || "Cook"} — logged with EmberLog`);
+    L.push(`🔥 ${cook.name || cook.protein || "Cook"} — logged with Pitmaster Log`);
     L.push(`${cook.protein}${cook.weight ? ` · ${cook.weight} ${cook.unit}` : ""}${cook.cooker ? ` · ${cook.cooker}` : ""}${cook.wood ? ` · ${cook.wood} wood` : ""}`);
     if (cook.targetTemp) L.push(`Pit: ${cook.targetTemp}°`);
     if (cook.prep) L.push(`Prep: ${cook.prep}`);

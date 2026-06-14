@@ -8,7 +8,7 @@ export const metadata = {
   description: t.desc,
   alternates: { canonical: "/tools/smoke-time/" },
   keywords: t.keywords,
-  openGraph: { title: t.title, description: t.desc, url: "/tools/smoke-time/" },
+  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/smoke-time/" },
 };
 
 const faqs = [

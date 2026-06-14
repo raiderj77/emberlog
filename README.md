@@ -1,4 +1,4 @@
-# EmberLog
+# Pitmaster Log
 
 A free, hardware-agnostic **BBQ cook log + pitmaster toolkit**, built as a static Next.js PWA. Local-first (no backend, no accounts), AdSense/Amazon-ready, full SEO/AEO/GEO.
 
@@ -42,7 +42,7 @@ npx vercel --prod  # production URL
 ```bash
 git init
 git add -A
-git commit -m "EmberLog initial"
+git commit -m "Pitmaster Log initial"
 # with the GitHub CLI:
 gh repo create emberlog --private --source=. --remote=origin --push
 # or create the repo on github.com, then:
@@ -60,7 +60,7 @@ Claude Code uses your local `gh` + `vercel` auth to do it.
 
 ## Rebrand / configure — one file: `lib/site.js`
 ```js
-SITE.name        // "EmberLog"  -> changes brand everywhere
+SITE.name        // "Pitmaster Log"  -> changes brand everywhere
 SITE.domain      // "emberlog.app"
 SITE.url         // "https://emberlog.app"  (set to your real domain before launch)
 SITE.contactEmail

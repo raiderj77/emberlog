@@ -8,7 +8,7 @@ export const metadata = {
   description: t.desc,
   alternates: { canonical: "/tools/doneness-temps/" },
   keywords: t.keywords,
-  openGraph: { title: t.title, description: t.desc, url: "/tools/doneness-temps/" },
+  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/doneness-temps/" },
 };
 
 const faqs = [

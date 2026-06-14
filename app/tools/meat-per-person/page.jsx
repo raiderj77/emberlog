@@ -8,7 +8,7 @@ export const metadata = {
   description: t.desc,
   alternates: { canonical: "/tools/meat-per-person/" },
   keywords: t.keywords,
-  openGraph: { title: t.title, description: t.desc, url: "/tools/meat-per-person/" },
+  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/meat-per-person/" },
 };
 
 const faqs = [

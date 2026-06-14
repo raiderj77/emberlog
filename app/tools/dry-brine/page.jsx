@@ -8,7 +8,7 @@ export const metadata = {
   description: t.desc,
   alternates: { canonical: "/tools/dry-brine/" },
   keywords: t.keywords,
-  openGraph: { title: t.title, description: t.desc, url: "/tools/dry-brine/" },
+  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/dry-brine/" },
 };
 
 const faqs = [

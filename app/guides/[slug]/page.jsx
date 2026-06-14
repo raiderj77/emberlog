@@ -18,7 +18,7 @@ export function generateMetadata({ params }) {
     title: a.title,
     description: a.description,
     alternates: { canonical: `/guides/${a.slug}/` },
-    openGraph: {
+    openGraph: { images: ["/og.png"],
       type: "article",
       title: a.title,
       description: a.description,

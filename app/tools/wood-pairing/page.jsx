@@ -8,7 +8,7 @@ export const metadata = {
   description: t.desc,
   alternates: { canonical: "/tools/wood-pairing/" },
   keywords: t.keywords,
-  openGraph: { title: t.title, description: t.desc, url: "/tools/wood-pairing/" },
+  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/wood-pairing/" },
 };
 
 const faqs = [

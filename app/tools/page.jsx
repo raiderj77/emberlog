@@ -10,7 +10,7 @@ export const metadata = {
   description:
     "Free BBQ calculators and references: smoke time estimator, meat per person, dry brine salt, doneness temperatures, and wood pairing. Fast, accurate, no sign-up.",
   alternates: { canonical: "/tools/" },
-  openGraph: { title: `BBQ & Smoking Calculators · ${SITE.name}`, description: "Smoke time, meat per person, dry brine, doneness temps, and wood pairing. Free and fast.", url: "/tools/" },
+  openGraph: { images: ["/og.png"], title: `BBQ & Smoking Calculators · ${SITE.name}`, description: "Smoke time, meat per person, dry brine, doneness temps, and wood pairing. Free and fast.", url: "/tools/" },
 };
 
 export default function ToolsPage() {
