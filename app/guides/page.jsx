@@ -26,6 +26,7 @@ const CATEGORIES = [
   { key: "seafood", label: "Seafood" },
   { key: "technique", label: "Techniques & Tools" },
   { key: "reference", label: "Reference Guides" },
+  { key: "sides", label: "Sides" },
 ];
 
 export default function GuidesPage() {

@@ -38,6 +38,7 @@ const CAT_LABELS = {
   seafood: "Seafood",
   technique: "Technique",
   reference: "Reference",
+  sides: "Sides",
 };
 
 export default function ArticlePage({ params }) {
