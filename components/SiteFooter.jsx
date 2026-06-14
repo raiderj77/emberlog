@@ -34,13 +34,27 @@ export default function SiteFooter() {
         <div>
           <h3 className="mb-3 text-sm font-semibold text-ink">Guides</h3>
           <ul className="space-y-2 text-sm text-muted">
-            {ARTICLES.slice(0, 6).map((a) => (
-              <li key={a.slug}>
-                <Link href={`/guides/${a.slug}/`} className="hover:text-ember-600">
-                  {a.title.replace(/:.*$/, "")}
-                </Link>
-              </li>
-            ))}
+            {[
+              "how-to-smoke-a-brisket",
+              "how-to-smoke-ribs",
+              "how-to-smoke-a-pork-butt",
+              "how-to-smoke-a-whole-chicken",
+              "how-to-smoke-beef-ribs",
+              "meat-internal-temperature-chart",
+            ].map((slug) => {
+              const a = ARTICLES.find((x) => x.slug === slug);
+              if (!a) return null;
+              return (
+                <li key={a.slug}>
+                  <Link href={`/guides/${a.slug}/`} className="hover:text-ember-600">
+                    {a.title.replace(/:.*$/, "")}
+                  </Link>
+                </li>
+              );
+            })}
+            <li>
+              <Link href="/guides/" className="font-medium hover:text-ember-600">All guides &rarr;</Link>
+            </li>
           </ul>
         </div>
 

@@ -30,12 +30,24 @@ export function generateMetadata({ params }) {
   };
 }
 
+const CAT_LABELS = {
+  brisket: "Brisket",
+  pork: "Pork",
+  poultry: "Poultry",
+  beef: "Beef",
+  seafood: "Seafood",
+  technique: "Technique",
+  reference: "Reference",
+};
+
 export default function ArticlePage({ params }) {
   const a = getArticle(params.slug);
   if (!a) notFound();
   const idx = ARTICLES.findIndex((x) => x.slug === a.slug);
   const next = ARTICLES[(idx + 1) % ARTICLES.length];
   const tool = a.tool ? getTool(a.tool) : null;
+  const related = ARTICLES.filter((x) => x.category === a.category && x.slug !== a.slug).slice(0, 3);
+  const catLabel = CAT_LABELS[a.category] || "";
 
   const articleLd = {
     "@context": "https://schema.org",
@@ -93,6 +105,29 @@ export default function ArticlePage({ params }) {
           )}
 
           <FaqList faqs={a.faqs} />
+
+          {related.length > 0 && (
+            <div className="mt-12 border-t border-line pt-8">
+              <h2 className="font-display text-xl font-bold">More {catLabel} guides</h2>
+              <div className="mt-4 grid gap-4 sm:grid-cols-3">
+                {related.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/guides/${r.slug}/`}
+                    className="group rounded-xl border border-line bg-white p-4 shadow-card transition hover:border-ember/40"
+                  >
+                    <div className="text-xs font-semibold uppercase tracking-widest text-muted">
+                      {r.readMins} min
+                    </div>
+                    <h3 className="mt-1 font-display text-base font-bold leading-snug group-hover:text-ember-600">
+                      {r.title.replace(/:.*$/, "")}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted line-clamp-2">{r.excerpt}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </article>
 
         <div className="mx-auto mt-12 flex max-w-prose items-center justify-between border-t border-line pt-6">

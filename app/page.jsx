@@ -177,7 +177,14 @@ export default function HomePage() {
           <SectionLabel>Guides</SectionLabel>
           <h2 className="font-display text-3xl font-bold tracking-tight">Straight answers, no 2,000-word life stories</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {ARTICLES.slice(0, 6).map((a) => (
+            {[
+              "how-to-smoke-a-brisket",
+              "how-to-smoke-ribs",
+              "how-to-smoke-a-pork-butt",
+              "smoked-chicken-wings",
+              "how-to-smoke-salmon",
+              "how-to-smoke-beef-ribs",
+            ].map((slug) => ARTICLES.find((a) => a.slug === slug)).filter(Boolean).map((a) => (
               <Link
                 key={a.slug}
                 href={`/guides/${a.slug}/`}
