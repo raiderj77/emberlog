@@ -5,19 +5,22 @@ import { TOOLS, getTool } from "@/lib/tools";
 import { Container, Breadcrumb, FaqList } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 
-export default function ToolShell({ slug, faqs = [], children }) {
+export default function ToolShell({ slug, faqs = [], children, title, desc, extraCrumb, canonicalPath }) {
   const tool = getTool(slug);
+  const h1 = title || tool.title;
+  const sub = desc || tool.desc;
+  const url = absUrl(canonicalPath || `/tools/${slug}/`);
   const others = TOOLS.filter((t) => t.slug !== slug).slice(0, 3);
 
   const appLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: tool.title,
-    url: absUrl(`/tools/${slug}/`),
+    name: h1,
+    url,
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Any (web browser)",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    description: tool.desc,
+    description: sub,
   };
   const faqLd = faqs.length
     ? {
@@ -27,14 +30,21 @@ export default function ToolShell({ slug, faqs = [], children }) {
       }
     : null;
 
+  const crumbs = [{ label: "Home", href: "/" }, { label: "Tools", href: "/tools/" }];
+  if (extraCrumb) {
+    crumbs.push({ label: tool.title, href: `/tools/${slug}/` }, { label: extraCrumb });
+  } else {
+    crumbs.push({ label: tool.title });
+  }
+
   return (
     <>
       <JsonLd data={appLd} />
       {faqLd && <JsonLd data={faqLd} />}
       <Container className="py-10">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Tools", href: "/tools/" }, { label: tool.title }]} />
-        <h1 className="max-w-3xl font-display text-3xl font-bold tracking-tight sm:text-4xl">{tool.title}</h1>
-        <p className="mt-3 max-w-2xl text-muted">{tool.desc}</p>
+        <Breadcrumb items={crumbs} />
+        <h1 className="max-w-3xl font-display text-3xl font-bold tracking-tight sm:text-4xl">{h1}</h1>
+        <p className="mt-3 max-w-2xl text-muted">{sub}</p>
 
         <div className="mt-8 max-w-3xl">{children}</div>
 

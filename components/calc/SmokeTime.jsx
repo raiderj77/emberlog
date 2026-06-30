@@ -5,9 +5,12 @@ import { Clock, AlertTriangle } from "lucide-react";
 
 const hm = (min) => { const h = Math.floor(min / 60), m = Math.round(min % 60); return h > 0 ? `${h} hr ${m ? m + " min" : ""}`.trim() : `${m} min`; };
 
-export default function SmokeTime() {
-  const [idx, setIdx] = useState(0);
-  const [weight, setWeight] = useState(13);
+export default function SmokeTime({ defaultProtein, defaultWeight } = {}) {
+  const initialIdx = defaultProtein
+    ? Math.max(0, SMOKE_TIMES.findIndex((s) => s.protein === defaultProtein))
+    : 0;
+  const [idx, setIdx] = useState(initialIdx);
+  const [weight, setWeight] = useState(defaultWeight ?? 13);
   const [serve, setServe] = useState("18:00");
   const [rest, setRest] = useState(1);
   const p = SMOKE_TIMES[idx];

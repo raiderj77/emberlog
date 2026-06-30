@@ -1,6 +1,7 @@
 import { SITE } from "@/lib/site";
 import { TOOLS } from "@/lib/tools";
 import { ARTICLES } from "@/lib/articles";
+import { SMOKE_PRESETS } from "@/lib/smokePresets";
 
 export default function sitemap() {
   const base = SITE.url;
@@ -17,9 +18,10 @@ export default function sitemap() {
     { path: "/disclaimer/", priority: 0.2, freq: "yearly" },
   ];
   const toolRoutes = TOOLS.map((t) => ({ path: `/tools/${t.slug}/`, priority: 0.7, freq: "monthly" }));
+  const presetRoutes = SMOKE_PRESETS.map((p) => ({ path: `/tools/smoke-time/${p.slug}/`, priority: 0.6, freq: "monthly" }));
   const guideRoutes = ARTICLES.map((a) => ({ path: `/guides/${a.slug}/`, priority: 0.7, freq: "monthly", lastModified: new Date(a.updated) }));
 
-  return [...staticRoutes, ...toolRoutes, ...guideRoutes].map((r) => ({
+  return [...staticRoutes, ...toolRoutes, ...presetRoutes, ...guideRoutes].map((r) => ({
     url: `${base}${r.path}`,
     lastModified: r.lastModified || now,
     changeFrequency: r.freq,
