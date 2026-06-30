@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SITE, absUrl } from "@/lib/site";
 import { ARTICLES } from "@/lib/articles";
+import { getAllPosts } from "@/lib/posts";
 import { Container, Breadcrumb, SectionLabel } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 
@@ -30,11 +31,13 @@ const CATEGORIES = [
 ];
 
 export default function GuidesPage() {
+  const ALL = [...ARTICLES, ...getAllPosts()];
+
   const ld = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "BBQ & Smoking Guides",
-    itemListElement: ARTICLES.map((a, i) => ({
+    itemListElement: ALL.map((a, i) => ({
       "@type": "ListItem",
       position: i + 1,
       url: absUrl(`/guides/${a.slug}/`),
@@ -56,7 +59,7 @@ export default function GuidesPage() {
 
         <div className="mt-12 space-y-14">
           {CATEGORIES.map((cat) => {
-            const articles = ARTICLES.filter((a) => a.category === cat.key);
+            const articles = ALL.filter((a) => a.category === cat.key);
             if (articles.length === 0) return null;
             return (
               <section key={cat.key}>
