@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { SMOKE_TIMES } from "@/lib/woods";
 import { Clock, AlertTriangle } from "lucide-react";
+import GearForCook from "@/components/GearForCook";
 
 const hm = (min) => { const h = Math.floor(min / 60), m = Math.round(min % 60); return h > 0 ? `${h} hr ${m ? m + " min" : ""}`.trim() : `${m} min`; };
 
@@ -80,6 +81,8 @@ export default function SmokeTime({ defaultProtein, defaultWeight } = {}) {
         <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
         <p><strong>Cook to temperature, not the clock.</strong> {p.note} These are planning estimates only; weather, your cooker, fat content, and wrapping all change the real time. Confirm doneness on the <a href="/tools/doneness-temps/" className="font-semibold underline">doneness chart</a>.</p>
       </div>
+
+      <GearForCook protein={p.protein} />
     </div>
   );
 }
