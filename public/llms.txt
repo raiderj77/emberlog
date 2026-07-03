@@ -1,7 +1,7 @@
-# Pitmaster Log — Free BBQ Cook Log & Pitmaster Calculators
+# Pitmaster Log, Free BBQ Cook Log & Pitmaster Calculators
 > https://pitmasterlog.com
 
-Pitmaster Log is a free, hardware-agnostic BBQ cook log plus a set of fast, accurate calculators for smoking and barbecue. Log every smoke, plan every cook, and repeat your best results. Built by Jason Ramirez, an independent developer, it runs in any browser, works on any phone or computer, and keeps your cook data on your own device — nothing is uploaded to a server.
+Pitmaster Log is a free, hardware-agnostic BBQ cook log plus a set of fast, accurate calculators for smoking and barbecue. Log every smoke, plan every cook, and repeat your best results. Built by Jason Ramirez, an independent developer, it runs in any browser, works on any phone or computer, and keeps your cook data on your own device, nothing is uploaded to a server.
 
 Every tool is free with no trial countdown. Food-safety temperatures come from the USDA Food Safety and Inspection Service (FSIS), with a clear line drawn between safe-minimum temperatures and the higher texture targets BBQ cooks use. This is an independent project, not affiliated with or endorsed by any thermometer, smoker, or grill manufacturer.
 
@@ -15,34 +15,34 @@ Every tool is free with no trial countdown. Food-safety temperatures come from t
 
 ## Cook Log
 
-- [BBQ Cook Log](https://pitmasterlog.com/log/): Free, private, browser-based log to record every smoke — cooker, temperatures, times, and notes — and export everything to CSV anytime. Data stays on your device.
+- [BBQ Cook Log](https://pitmasterlog.com/log/): Free, private, browser-based log to record every smoke, cooker, temperatures, times, and notes, and export everything to CSV anytime. Data stays on your device.
 
 ## Guides
 
-- [How to Smoke a Brisket](https://pitmasterlog.com/guides/how-to-smoke-a-brisket/): Full brisket method — trimming, seasoning, cooker temps, the stall, wrapping, and resting.
+- [How to Smoke a Brisket](https://pitmasterlog.com/guides/how-to-smoke-a-brisket/): Full brisket method, trimming, seasoning, cooker temps, the stall, wrapping, and resting.
 - [How Long to Smoke a Brisket](https://pitmasterlog.com/guides/how-long-to-smoke-a-brisket/): Brisket cook times by weight and temperature, plus when to start for an on-time meal.
-- [How to Wrap Brisket](https://pitmasterlog.com/guides/how-to-wrap-brisket/): When and how to wrap brisket — butcher paper vs foil — to push through the stall.
+- [How to Wrap Brisket](https://pitmasterlog.com/guides/how-to-wrap-brisket/): When and how to wrap brisket, butcher paper vs foil, to push through the stall.
 - [The Brisket Stall](https://pitmasterlog.com/guides/the-brisket-stall/): Why brisket stalls, the temperature range it happens in, and how to handle it.
-- [Brisket Rub Guide](https://pitmasterlog.com/guides/brisket-rub-guide/): Building a brisket rub — salt-to-pepper ratios and when to add other spices.
-- [Burnt Ends](https://pitmasterlog.com/guides/burnt-ends/): How to make burnt ends from the brisket point — cubing, saucing, and the final render.
+- [Brisket Rub Guide](https://pitmasterlog.com/guides/brisket-rub-guide/): Building a brisket rub, salt-to-pepper ratios and when to add other spices.
+- [Burnt Ends](https://pitmasterlog.com/guides/burnt-ends/): How to make burnt ends from the brisket point, cubing, saucing, and the final render.
 - [How to Smoke Ribs](https://pitmasterlog.com/guides/how-to-smoke-ribs/): Smoking pork ribs, including the 3-2-1 method, doneness signs, and the bend test.
-- [How to Smoke a Pork Butt](https://pitmasterlog.com/guides/how-to-smoke-a-pork-butt/): Pork butt for pulled pork — temps, managing the stall, and pulling.
+- [How to Smoke a Pork Butt](https://pitmasterlog.com/guides/how-to-smoke-a-pork-butt/): Pork butt for pulled pork, temps, managing the stall, and pulling.
 - [How to Smoke a Pork Loin](https://pitmasterlog.com/guides/how-to-smoke-a-pork-loin/): Smoking a lean pork loin to a juicy finish without drying it out.
 - [How to Smoke Pork Tenderloin](https://pitmasterlog.com/guides/how-to-smoke-pork-tenderloin/): Quick-smoking pork tenderloin with the right temps and timing.
-- [How to Smoke a Whole Chicken](https://pitmasterlog.com/guides/how-to-smoke-a-whole-chicken/): Whole chicken with crispy skin — cooker temps and timing.
+- [How to Smoke a Whole Chicken](https://pitmasterlog.com/guides/how-to-smoke-a-whole-chicken/): Whole chicken with crispy skin, cooker temps and timing.
 - [Smoked Chicken Wings](https://pitmasterlog.com/guides/smoked-chicken-wings/): Smoked wings with crispy skin, including the high-heat finish.
-- [How to Smoke a Turkey](https://pitmasterlog.com/guides/how-to-smoke-a-turkey/): Smoking a whole turkey — brining, temps, and timing for the holidays.
-- [How to Smoke Beef Ribs](https://pitmasterlog.com/guides/how-to-smoke-beef-ribs/): Beef plate ribs — the "brisket on a stick" method from trim to rest.
+- [How to Smoke a Turkey](https://pitmasterlog.com/guides/how-to-smoke-a-turkey/): Smoking a whole turkey, brining, temps, and timing for the holidays.
+- [How to Smoke Beef Ribs](https://pitmasterlog.com/guides/how-to-smoke-beef-ribs/): Beef plate ribs, the "brisket on a stick" method from trim to rest.
 - [How to Smoke Tri-Tip](https://pitmasterlog.com/guides/how-to-smoke-tri-tip/): Tri-tip with a smoke-then-sear approach for a medium-rare finish.
-- [How to Smoke Prime Rib](https://pitmasterlog.com/guides/how-to-smoke-prime-rib/): Smoked prime rib — seasoning, target temps, and reverse sear.
-- [How to Smoke Salmon](https://pitmasterlog.com/guides/how-to-smoke-salmon/): Hot-smoking salmon — cure, temperatures, and texture.
+- [How to Smoke Prime Rib](https://pitmasterlog.com/guides/how-to-smoke-prime-rib/): Smoked prime rib, seasoning, target temps, and reverse sear.
+- [How to Smoke Salmon](https://pitmasterlog.com/guides/how-to-smoke-salmon/): Hot-smoking salmon, cure, temperatures, and texture.
 - [Smoked Mac and Cheese](https://pitmasterlog.com/guides/smoked-mac-and-cheese/): A classic smoked BBQ side dish, start to finish.
 - [Smoker Temperature Guide](https://pitmasterlog.com/guides/smoker-temperature-guide/): Choosing the right smoker temperature for different meats and results.
 - [Meat Internal Temperature Chart](https://pitmasterlog.com/guides/meat-internal-temperature-chart/): Safe-minimum and target internal temperatures for all common smoked meats.
 - [Best Wood for Smoking](https://pitmasterlog.com/guides/best-wood-for-smoking/): Which smoking woods pair with which meats, and the flavors each one adds.
 - [How Much Meat Per Person](https://pitmasterlog.com/guides/how-much-meat-per-person/): How much meat to buy per guest for a BBQ, by cut and appetite.
 - [Dry Brine Guide](https://pitmasterlog.com/guides/dry-brine-guide/): How dry brining works, salt ratios, and timing for better flavor and texture.
-- [First Smoke: Beginner's Guide](https://pitmasterlog.com/guides/first-smoke-beginners-guide/): A beginner's first smoke — gear, fire management, and what to cook first.
+- [First Smoke: Beginner's Guide](https://pitmasterlog.com/guides/first-smoke-beginners-guide/): A beginner's first smoke, gear, fire management, and what to cook first.
 - [Why Keep a BBQ Cook Log](https://pitmasterlog.com/guides/why-keep-a-bbq-cook-log/): How logging your cooks helps you dial in your cooker and repeat great results.
 
 ## About

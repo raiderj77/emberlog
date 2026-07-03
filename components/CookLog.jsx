@@ -163,7 +163,7 @@ function CookDetail({ cook, onBack, update, removeCook }) {
 
   function copyCard() {
     const L = [];
-    L.push(`🔥 ${cook.name || cook.protein || "Cook"} — logged with Pitmaster Log`);
+    L.push(`🔥 ${cook.name || cook.protein || "Cook"}, logged with Pitmaster Log`);
     L.push(`${cook.protein}${cook.weight ? ` · ${cook.weight} ${cook.unit}` : ""}${cook.cooker ? ` · ${cook.cooker}` : ""}${cook.wood ? ` · ${cook.wood} wood` : ""}`);
     if (cook.targetTemp) L.push(`Pit: ${cook.targetTemp}°`);
     if (cook.prep) L.push(`Prep: ${cook.prep}`);
@@ -256,12 +256,12 @@ function AddReading({ cook, onAdd }) {
   const submit = () => { onAdd(vals); setVals({}); };
   return (
     <div className="rounded-xl border border-line bg-white p-4">
-      <h3 className="mb-3 font-display text-lg font-bold">Log a reading <span className="text-sm font-normal text-muted">— stamped now</span></h3>
+      <h3 className="mb-3 font-display text-lg font-bold">Log a reading <span className="text-sm font-normal text-muted">, stamped now</span></h3>
       <div className="flex flex-wrap items-end gap-3">
         {cook.probes.map((p) => (
           <label key={p.id} className="block">
             <span className="mb-1 flex items-center gap-1.5 text-xs font-medium text-muted"><span className="h-2.5 w-2.5 rounded-full" style={{ background: p.color }} />{p.name} °</span>
-            <input type="number" inputMode="numeric" value={vals[p.id] ?? ""} onChange={(e) => setVals((v) => ({ ...v, [p.id]: e.target.value }))} onKeyDown={(e) => e.key === "Enter" && submit()} className="inp w-24" placeholder="—" />
+            <input type="number" inputMode="numeric" value={vals[p.id] ?? ""} onChange={(e) => setVals((v) => ({ ...v, [p.id]: e.target.value }))} onKeyDown={(e) => e.key === "Enter" && submit()} className="inp w-24" placeholder=", " />
           </label>
         ))}
         <button onClick={submit} className="inline-flex items-center gap-1.5 rounded-lg bg-ember px-4 py-2 text-sm font-semibold text-white hover:bg-ember-600"><Thermometer className="h-4 w-4" /> Log</button>
@@ -289,7 +289,7 @@ function ReadingsTable({ cook, t0, onRemove }) {
               <tr key={r.id} className="border-b border-line/70 last:border-0">
                 <td className="px-3 py-2 font-mono text-xs">{fmtTime(r.t)}</td>
                 <td className="px-3 py-2 font-mono text-xs text-muted">{h > 0 ? `${h}h ${m}m` : `${m}m`}</td>
-                {cook.probes.map((p) => <td key={p.id} className="px-3 py-2 font-mono">{r.values[p.id] != null ? `${r.values[p.id]}°` : "—"}</td>)}
+                {cook.probes.map((p) => <td key={p.id} className="px-3 py-2 font-mono">{r.values[p.id] != null ? `${r.values[p.id]}°` : ", "}</td>)}
                 <td className="px-2 py-2 text-right"><button onClick={() => onRemove(r.id)} className="text-muted hover:text-rose-500"><Trash2 className="h-4 w-4" /></button></td>
               </tr>
             );

@@ -1,4 +1,4 @@
-// Pitmaster Log service worker — simple offline shell cache.
+// Pitmaster Log service worker, simple offline shell cache.
 const CACHE = "pitmasterlog-v1";
 const SHELL = ["/", "/log/", "/tools/", "/guides/", "/manifest.webmanifest"];
 

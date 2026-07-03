@@ -2,9 +2,9 @@
 title: "Brisket stall temperature: why it happens and when to wrap"
 date: "2026-06-29"
 slug: "brisket-stall-temperature-why-it-happens-and-when-to-wrap"
-description: ""
+description: "The brisket stall hits most cooks between 150F and 170F and can last 2 to 6 hours. Here is why it happens and whether you should wrap through it or ride it out bare."
 status: published
-author: "Your Friendly Developer LLC"
+author: "PitmasterLog"
 ---
 
 # Brisket Stall Temperature: Why It Happens and When to Wrap
@@ -67,7 +67,7 @@ Do not pull the brisket the moment the stall ends. The real finish line is probe
 The brisket stall typically occurs between 150°F and 170°F (65°C–77°C). At this range, evaporative cooling from moisture escaping the meat's surface counteracts the heat from your smoker, causing the internal temperature to plateau for anywhere from 2 to 6 hours. It's a completely normal part of the smoking process and not a sign that something has gone wrong with your cook.
 
 ### How long does the brisket stall last?
-The stall can last anywhere from 2 to 6 hours, depending on the size of your brisket, smoker temperature, and humidity levels. Larger packer briskets tend to stall longer than trimmed flats. Cooking at higher smoker temperatures (275°F–300°F) can shorten the stall, while lower-and-slower cooks at 225°F may extend it significantly. Patience is key—rushing through the stall often leads to tough, undercooked brisket.
+The stall can last anywhere from 2 to 6 hours, depending on the size of your brisket, smoker temperature, and humidity levels. Larger packer briskets tend to stall longer than trimmed flats. Cooking at higher smoker temperatures (275°F–300°F) can shorten the stall, while lower-and-slower cooks at 225°F may extend it significantly. Patience is key, rushing through the stall often leads to tough, undercooked brisket.
 
 ### Should I wrap my brisket during the stall?
 Wrapping your brisket during the stall is one of the most effective ways to push through it faster. Using butcher paper or aluminum foil (the Texas Crutch method) traps heat and reduces evaporative cooling, shortening cook time by 1–3 hours. Foil retains more moisture but softens the bark, while butcher paper preserves bark texture better. Most pitmasters wrap when the brisket hits 160°F–170°F and the bark is fully set.
