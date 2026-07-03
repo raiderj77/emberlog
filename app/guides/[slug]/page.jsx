@@ -134,7 +134,7 @@ export default function ArticlePage({ params }) {
             {a.title}
           </h1>
           <div className="mt-3 flex items-center gap-2 text-sm text-muted">
-            <span>By {SITE.author}</span>
+            <span>By <Link href="/about/" className="underline hover:text-ember-600">{SITE.author}</Link></span>
             <span>·</span>
             <span>
               Updated{" "}
