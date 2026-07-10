@@ -13,6 +13,9 @@ The 321 method gives you soft, fall-off-the-bone ribs with less guesswork. No-wr
 
 ## What Actually Is the 321 Method?
 
+The 321 method involves smoking ribs for 3 hours, wrapping them in foil for 2 hours, and finishing unwrapped for 1 hour. It's a structured approach at 225°F to ensure even cooking and juicy results.
+
+
 321 means 3 hours smoking, 2 hours wrapped, 1 hour unwrapped to finish. It's a timer-based system built for spare ribs at 225°F.
 
 The numbers are a starting point, not a law. Here's what happens in each phase:
