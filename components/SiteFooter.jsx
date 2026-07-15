@@ -76,7 +76,7 @@ export default function SiteFooter() {
             Created by {SITE.author}. Cook data you enter is stored only in your browser, not on our
             servers. Food-safety temperatures referenced on this site come from USDA FSIS and are
             general information, not professional advice; always follow current USDA guidance. As an
-            Amazon Associate, this site may earn from qualifying purchases.
+            Amazon Associate I earn from qualifying purchases.
           </p>
           <p className="mt-3 text-xs text-muted">
             © {year} {SITE.name}. All rights reserved.
