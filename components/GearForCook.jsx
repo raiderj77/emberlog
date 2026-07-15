@@ -1,9 +1,10 @@
 "use client";
 import { ShoppingCart } from "lucide-react";
-import { GEAR, AMAZON_TAG } from "@/lib/gear";
+import { GEAR } from "@/lib/gear";
+import { SITE } from "@/lib/site";
 
 function amazonUrl(q) {
-  return `https://www.amazon.com/s?k=${encodeURIComponent(q)}&tag=${AMAZON_TAG}`;
+  return `https://www.amazon.com/s?k=${encodeURIComponent(q)}&tag=${SITE.amazonTag}`;
 }
 
 function track(label) {
@@ -41,7 +42,7 @@ export default function GearForCook({ protein }) {
         ))}
       </div>
       <p className="mt-3 text-xs text-muted">
-        As an Amazon Associate, Pitmaster Log earns from qualifying purchases.
+        As an Amazon Associate I earn from qualifying purchases.
       </p>
     </div>
   );
