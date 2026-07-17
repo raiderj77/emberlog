@@ -93,6 +93,9 @@ Wrapping in butcher paper or foil can push through the stall faster by trapping 
 
 ## Should I Trust the Clock or the Thermometer?
 
+Trust your thermometer and probe feel, not the clock. The USDA minimum of 145°F is just a safety guideline; brisket needs to reach around 203°F for true doneness. Plan your cook time based on weight and desired tenderness.
+
+
 Trust the thermometer and the probe feel every time. The clock only exists to help you plan your day. It should never tell you when the brisket is done.
 
 The USDA minimum safe temp for beef is 145°F. That number is about food safety, not doneness. Brisket at 145°F is tough, chewy, and nowhere near ready to eat. Pitmasters cook well past that minimum because collagen and connective tissue in a brisket don't break down until the internal temp reaches 195-205°F.
@@ -106,6 +109,9 @@ Here's how to check for real doneness:
 Some briskets probe tender at 195°F. Others need to go to 205°F or even 208°F. Weight and time estimates get you in the ballpark. The probe tells you the truth.
 
 ## What If I'm Cooking for a Specific Event?
+
+Cook backward from your event time, adding extra buffer. A rested brisket can hold safely, so aim to finish early. For example, if serving at 5 p.m., start cooking well before dawn and plan for rest periods.
+
 
 Cook backward from your event time and always add a padding window. A rested, wrapped brisket holds safely for hours, so finishing early beats finishing late every time.
 
@@ -133,6 +139,9 @@ Long holds also give you flexibility. If your brisket finishes 2 hours early, th
 Finishing late is the real problem. That's why the buffer time matters more than people expect. Build in the extra hours upfront so a slow cook doesn't wreck your dinner plans.
 
 ## Quick Decision Checklist
+
+For tight schedules, go hot and fast (275-300°F). For all-night smokes, low and slow (225-250°F) yields better bark. Always start early to account for rest time; late brisket ruins the event.
+
 
 Use this to pick your approach fast:
 
