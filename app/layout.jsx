@@ -4,6 +4,25 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PwaRegister from "@/components/PwaRegister";
 import JsonLd from "@/components/JsonLd";
+import ConsentManager from "@/components/ConsentManager";
+import { Bricolage_Grotesque, Inter, Space_Mono } from "next/font/google";
+
+const displayFont = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+const sansFont = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+const monoFont = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL(SITE.url),
@@ -80,21 +99,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5KQPM46PP" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-E5KQPM46PP');`,
-          }}
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
+      <body className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable}`}>
         <JsonLd data={orgLd} />
         <JsonLd data={siteLd} />
         <PwaRegister />
@@ -107,6 +112,7 @@ export default function RootLayout({ children }) {
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <ConsentManager />
       </body>
     </html>
   );

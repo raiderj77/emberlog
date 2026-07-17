@@ -1,6 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { Users, AlertTriangle } from "lucide-react";
+import Link from "next/link";
 
 const CUTS = [
   { name: "Pulled pork (shoulder/butt)", yield: 0.5 },
@@ -61,7 +62,7 @@ export default function MeatPerPerson() {
 
       <div className="flex gap-3 rounded-lg border border-line bg-paper p-4 text-sm text-muted">
         <AlertTriangle className="h-5 w-5 shrink-0 text-ember" />
-        <p>Round up on cheaper proteins; leftovers freeze and reheat well. Read the full method in <a href="/guides/how-much-meat-per-person/" className="font-semibold text-ember-600 underline">How Much Meat Per Person</a>.</p>
+        <p>Round up on cheaper proteins; leftovers freeze and reheat well. Read the full method in <Link href="/guides/how-much-meat-per-person/" className="font-semibold text-ember-600 underline">How Much Meat Per Person</Link>.</p>
       </div>
     </div>
   );

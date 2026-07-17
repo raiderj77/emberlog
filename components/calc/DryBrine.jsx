@@ -1,6 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { Soup, AlertTriangle } from "lucide-react";
+import Link from "next/link";
 
 // Approximate grams of salt per teaspoon by brand.
 const SALT = { "Diamond Crystal kosher": 2.8, "Morton kosher": 4.8, "Table / fine sea": 6.0 };
@@ -53,12 +54,12 @@ export default function DryBrine() {
 
       <div className="rounded-lg border border-line bg-paper p-4 text-sm text-muted">
         <p className="font-medium text-ink">Timing</p>
-        <p className="mt-1">Apply, then rest uncovered in the fridge: 1-12 hr for chops and chicken pieces, 12-24 hr for a whole chicken or roast, 24-48 hr for turkey. More detail in the <a href="/guides/dry-brine-guide/" className="font-semibold text-ember-600 underline">dry brine guide</a>.</p>
+        <p className="mt-1">Apply, then rest uncovered in the fridge: 1-12 hr for chops and chicken pieces, 12-24 hr for a whole chicken or roast, 24-48 hr for turkey. More detail in the <Link href="/guides/dry-brine-guide/" className="font-semibold text-ember-600 underline">dry brine guide</Link>.</p>
       </div>
 
       <div className="flex gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
         <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
-        <p>Salt amounts are for flavor. Always cook meat to its <a href="/tools/doneness-temps/" className="font-semibold underline">USDA safe minimum temperature</a> regardless of brining.</p>
+        <p>Salt amounts are for flavor. Always cook meat to its <Link href="/tools/doneness-temps/" className="font-semibold underline">USDA safe minimum temperature</Link> regardless of brining.</p>
       </div>
     </div>
   );

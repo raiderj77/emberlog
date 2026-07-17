@@ -8,8 +8,9 @@ export function generateStaticParams() {
   return SMOKE_PRESETS.map((p) => ({ preset: p.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const p = getSmokePreset(params.preset);
+export async function generateMetadata({ params }) {
+  const { preset } = await params;
+  const p = getSmokePreset(preset);
   if (!p) return {};
   const canonical = `/tools/smoke-time/${p.slug}/`;
   return {
@@ -21,8 +22,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Page({ params }) {
-  const p = getSmokePreset(params.preset);
+export default async function Page({ params }) {
+  const { preset } = await params;
+  const p = getSmokePreset(preset);
   if (!p) return null;
 
   return (

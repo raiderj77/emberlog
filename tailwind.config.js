@@ -11,7 +11,7 @@ module.exports = {
         paper: "#faf7f2",
         surface: "#ffffff",
         ink: "#1c1917",
-        muted: "#78716c",
+        muted: "#6f6863",
         line: "#e9e3d8",
         ember: {
           DEFAULT: "#d6450f",
@@ -22,9 +22,9 @@ module.exports = {
         gold: "#dca423",
       },
       fontFamily: {
-        display: ['"Bricolage Grotesque"', "ui-sans-serif", "system-ui", "sans-serif"],
-        sans: ['"Inter"', "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ['"Space Mono"', "ui-monospace", "monospace"],
+        display: ["var(--font-display)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
         content: "1120px",
