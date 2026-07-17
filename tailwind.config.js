@@ -14,7 +14,7 @@ module.exports = {
         muted: "#6f6863",
         line: "#e9e3d8",
         ember: {
-          DEFAULT: "#d6450f",
+          DEFAULT: "#cf410d",
           600: "#bd3b09",
           700: "#9a3007",
         },
