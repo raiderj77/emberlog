@@ -3,6 +3,7 @@ import { Flame } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { TOOLS } from "@/lib/tools";
 import { ARTICLES } from "@/lib/articles";
+import PrivacyChoicesButton from "@/components/PrivacyChoicesButton";
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -66,6 +67,7 @@ export default function SiteFooter() {
             <li><Link href="/privacy/" className="hover:text-ember-600">Privacy Policy</Link></li>
             <li><Link href="/terms/" className="hover:text-ember-600">Terms of Use</Link></li>
             <li><Link href="/disclaimer/" className="hover:text-ember-600">Disclaimer</Link></li>
+            <li><PrivacyChoicesButton /></li>
           </ul>
         </div>
       </div>

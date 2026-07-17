@@ -15,8 +15,9 @@ export function generateStaticParams() {
   ];
 }
 
-export function generateMetadata({ params }) {
-  const a = getArticle(params.slug) ?? getPost(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const a = getArticle(slug) ?? getPost(slug);
   if (!a) return {};
   return {
     title: a.title,
@@ -46,8 +47,9 @@ const CAT_LABELS = {
   sides: "Sides",
 };
 
-export default function ArticlePage({ params }) {
-  const a = getArticle(params.slug) ?? getPost(params.slug);
+export default async function ArticlePage({ params }) {
+  const { slug } = await params;
+  const a = getArticle(slug) ?? getPost(slug);
   if (!a) notFound();
 
   const ALL = [...ARTICLES, ...getAllPosts()];

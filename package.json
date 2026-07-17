@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.2.10",
     "postcss": "8.5.15",
     "tailwindcss": "^3.4.13"
   },
