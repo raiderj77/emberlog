@@ -3,6 +3,15 @@ const nextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/guides/brisket-cook-time/",
+        destination: "/guides/how-long-to-smoke-a-brisket/",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
