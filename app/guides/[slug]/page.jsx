@@ -4,15 +4,13 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SITE, absUrl } from "@/lib/site";
 import { ARTICLES, getArticle } from "@/lib/articles";
 import { getAllPosts, getPost } from "@/lib/posts";
+import { uniqueBySlug } from "@/lib/collections";
 import { getTool } from "@/lib/tools";
 import { Container, Breadcrumb, AnswerBox, FaqList } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
-  return [
-    ...ARTICLES.map((a) => ({ slug: a.slug })),
-    ...getAllPosts().map((p) => ({ slug: p.slug })),
-  ];
+  return uniqueBySlug(ARTICLES, getAllPosts()).map((article) => ({ slug: article.slug }));
 }
 
 export async function generateMetadata({ params }) {
@@ -52,7 +50,7 @@ export default async function ArticlePage({ params }) {
   const a = getArticle(slug) ?? getPost(slug);
   if (!a) notFound();
 
-  const ALL = [...ARTICLES, ...getAllPosts()];
+  const ALL = uniqueBySlug(ARTICLES, getAllPosts());
   const idx = ALL.findIndex((x) => x.slug === a.slug);
   const next = ALL[(idx + 1) % ALL.length];
 

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { SITE, absUrl } from "@/lib/site";
 import { ARTICLES } from "@/lib/articles";
 import { getAllPosts } from "@/lib/posts";
+import { uniqueBySlug } from "@/lib/collections";
 import { Container, Breadcrumb, SectionLabel } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 
@@ -31,7 +32,7 @@ const CATEGORIES = [
 ];
 
 export default function GuidesPage() {
-  const ALL = [...ARTICLES, ...getAllPosts()];
+  const ALL = uniqueBySlug(ARTICLES, getAllPosts());
 
   const ld = {
     "@context": "https://schema.org",
