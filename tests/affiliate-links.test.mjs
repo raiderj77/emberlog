@@ -8,7 +8,7 @@ test("Amazon links use the site-wide approved associate tag", () => {
   const site = read("lib/site.js");
   const gear = read("components/GearForCook.jsx");
 
-  assert.match(site, /amazonTag:\s*"ytearnings-20"/);
+  assert.match(site, /amazonTag:\s*"pitmasterlog-20"/);
   assert.match(gear, /tag=\$\{SITE\.amazonTag\}/);
   assert.doesNotMatch(gear, /YOURTAG-20/);
 });
