@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { SMOKE_TIMES } from "@/lib/woods";
-import { Clock, AlertTriangle } from "lucide-react";
+import { Clock, AlertTriangle, Printer } from "lucide-react";
 import GearForCook from "@/components/GearForCook";
 
 const hm = (min) => { const h = Math.floor(min / 60), m = Math.round(min % 60); return h > 0 ? `${h} hr ${m ? m + " min" : ""}`.trim() : `${m} min`; };
@@ -34,7 +34,7 @@ export default function SmokeTime({ defaultProtein, defaultWeight } = {}) {
   }, [serve, rest, maxMin]);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5" data-printable-results>
       <div className="grid gap-4 sm:grid-cols-3">
         <label className="block">
           <span className="mb-1 block text-sm font-medium">Protein</span>
@@ -81,6 +81,16 @@ export default function SmokeTime({ defaultProtein, defaultWeight } = {}) {
         <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
         <p><strong>Cook to temperature, not the clock.</strong> {p.note} These are planning estimates only; weather, your cooker, fat content, and wrapping all change the real time. Confirm doneness on the <a href="/tools/doneness-temps/" className="font-semibold underline">doneness chart</a>.</p>
       </div>
+
+      <button
+        type="button"
+        onClick={() => window.print()}
+        className="no-print inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-ember-600 bg-white px-4 py-2 text-sm font-semibold text-ember-700 hover:bg-ember-50 focus:outline-none focus:ring-2 focus:ring-ember-600 focus:ring-offset-2"
+        aria-label="Print results"
+      >
+        <Printer className="h-4 w-4" aria-hidden="true" />
+        Print results
+      </button>
 
       <GearForCook protein={p.protein} />
     </div>
