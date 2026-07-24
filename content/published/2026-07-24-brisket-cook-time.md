@@ -91,6 +91,9 @@ Never plan a cook with zero buffer. Brisket doesn't hit deadlines on command. A 
 
 ## Quick Decision Guide
 
+For quick decisions: short on time, aim for hot and fast at 275°F with foil wrap after bark sets. For competition, low and slow at 225-250°F without wrapping, probe check for doneness.
+
+
 - **Short on time, feeding family tonight:** Hot and fast, 275°F, wrap in foil after bark sets.
 - **Cooking for competition:** Low and slow, 225-250°F, butcher paper or no wrap, rely on probe feel over clock time.
 - **First time running your smoker on brisket:** Low and slow, build in 2-3 hours buffer, check probe tenderness starting at 195°F.
