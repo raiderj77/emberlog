@@ -4,6 +4,7 @@ import test from "node:test";
 
 import { BRISKET_TIMING_ARTICLE } from "../lib/brisket-timing-article.js";
 import { uniqueBySlug } from "../lib/collections.js";
+import { markdownToHtml } from "../lib/posts.js";
 
 test("brisket timing guide answers the visible query with sourced planning ranges", async () => {
   const article = BRISKET_TIMING_ARTICLE;
@@ -61,6 +62,22 @@ test("published guidance does not promise an unmonitored cooler is food-safe", a
   assert.match(articlesSource, /145°F with a 3-minute rest/);
 });
 
+test("generated Markdown escapes raw HTML and rejects unsafe link protocols", () => {
+  const html = markdownToHtml(
+    "Text <script >alert(1)</script> <img src=x onerror=alert(2)> " +
+      "[unsafe](javascript:alert(3)) [safe](https://example.com/guide?q=smoke&size=12)",
+  );
+
+  assert.equal(html.includes("<script"), false);
+  assert.equal(html.includes("<img"), false);
+  assert.equal(html.includes('href="javascript:'), false);
+  assert.match(html, /&lt;script &gt;alert\(1\)&lt;\/script&gt;/);
+  assert.match(
+    html,
+    /href="https:\/\/example\.com\/guide\?q=smoke&amp;size=12"/,
+  );
+});
+
 test("guide collections keep one canonical card and route per slug", () => {
   const merged = uniqueBySlug(
     [{ slug: "how-long-to-smoke-a-brisket", title: "Reviewed" }],
@@ -83,7 +100,7 @@ test("future generated guides require sources and complete search metadata", asy
     if (date < "2026-07-18") continue;
 
     const description = source.match(/^description:\s*"([^"]+)"/m)?.[1] ?? "";
-    const visibleCopy = source.replace(/<script[\s\S]*?<\/script>/gi, "");
+    const visibleCopy = source.split('<script type="application/ld+json">', 1)[0];
     assert.match(visibleCopy, /\]\(https?:\/\//, `${file} must cite at least one visible external source`);
     assert.ok(description.length >= 70 && description.length <= 160, `${file} needs a complete 70-160 character description`);
   }
