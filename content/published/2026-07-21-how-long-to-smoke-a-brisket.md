@@ -2,7 +2,7 @@
 title: "How long to smoke a brisket?"
 date: "2026-07-21"
 slug: "how-long-to-smoke-a-brisket"
-description: "Plan on 1 to 1.5 hours per pound at 250°F. A 12-pound packer runs 12 to 18 hours. But time is a guess, not a plan. The real answer is: smoke it until it probes "
+description: "Plan brisket time by weight and pit temperature, then use probe tenderness—not the clock—to decide when it is ready."
 status: published
 author: "PitmasterLog"
 ---
@@ -33,11 +33,11 @@ So the fix is simple. Stop cooking to a clock. Start cooking to feel and tempera
 
 ## So What Temperature Actually Means Brisket Is Done?
 
-USDA lists 145°F as the minimum safe temperature for whole cuts of beef. That number keeps you safe. It does not make brisket taste good. Brisket needs to hit 195°F to 205°F internal, and more importantly, it needs to probe like butter.
+USDA lists 145°F followed by at least a three-minute rest as the minimum for whole cuts of beef. That combination addresses food safety; it does not guarantee tender brisket. Brisket often becomes probe-tender somewhere around 195°F to 205°F internal, but feel matters more than a fixed finish number.
 
 These are two different jobs. Food safety is about killing bacteria. Tenderness is about breaking down collagen and connective tissue in a tough cut of meat. Brisket is loaded with both. It comes from the chest of the cow, a muscle that works hard every day. That means tons of collagen.
 
-At 145°F, brisket is safe to eat. It is also tough as leather. Nobody wants that.
+At 145°F with the USDA rest time, a whole cut of beef meets the federal minimum. Brisket at that point is usually still tough.
 
 Somewhere between 195°F and 205°F, collagen breaks down into gelatin. That's what gives good brisket its soft, almost silky bite. This is why brisket, unlike a steak, gets more tender the longer you cook it, up to a point.
 
@@ -92,17 +92,23 @@ Here's how to build it out for a 13-pound packer, smoking at 250°F:
 3. Build in a buffer. Add 2 hours on top of your estimate for stall delays or a slow cooker.
 4. Set your start time. If you want to eat at 6 PM, and your high estimate is 19.5 hours cook plus 2 hours rest plus 2 hours buffer, that's 23.5 hours. Start the night before, around 6:30 PM.
 
-This feels like overkill until you've been burned once by a brisket that isn't ready at dinnertime. Competition teams build in buffers like this because a brisket sitting done and resting for two extra hours is no problem. A brisket that's not ready when the judges walk up is a disaster.
+This feels like overkill until you've been burned once by a brisket that isn't ready at dinnertime. Building in a buffer gives you room to finish early and use a temperature-monitored hold instead of rushing the cook.
 
-If your brisket finishes early, that's a good problem. Wrap it in towels and hold it in a dry cooler. A well-insulated cooler can hold brisket at safe serving temps for 2 to 4 hours, and the extra rest time only helps the texture.
+If your brisket finishes early, use a food thermometer and keep it at 140°F or warmer. A dry cooler is insulation, not a temperature-controlled warmer, so check it regularly. If you are no longer holding the meat at 140°F or above, refrigerate it within two hours.
 
 ## What If My Brisket Finishes Way Ahead Of Schedule?
 
-Rest it longer. Brisket held wrapped in a cooler at 140°F or above can safely sit for hours, and this extra rest often makes it even better by letting the juices redistribute fully.
+Rest it longer, but monitor the hold with a food thermometer. USDA guidance says hot food should remain at 140°F or warmer.
 
-This is actually the better problem to have. A brisket that finishes 3 hours early just means more time to relax. Wrap it in butcher paper or foil, then wrap that in a couple of towels, and set it in a dry cooler. No ice, no water, just an insulated box. It'll hold safely for hours this way.
+Finishing early is easier to manage than serving an undercooked brisket. Wrapping and an insulated cooler may slow heat loss, but they do not establish a safe holding time or temperature.
 
-Some of the best competition brisket comes out of a long hold, not straight off the smoker. The extra time lets connective tissue keep breaking down slowly, and the juices settle back into the meat instead of running out on the cutting board.
+The extra time can improve slicing and texture, but the cooler does not prove the food is still hot enough. Check the temperature rather than relying on elapsed time.
+
+## Sources and further reading
+
+- [USDA FSIS safe minimum internal temperatures](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart)
+- [USDA FSIS leftovers and hot-holding guidance](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety)
+- [Traeger brisket timing and temperature guide](https://www.traeger.com/en/learn/how-to-smoked-brisket)
 
 ## The Real Takeaway
 
@@ -114,7 +120,7 @@ Time gives you a starting point. Temperature and feel give you the finish line. 
 Plan on roughly 1 to 1.5 hours per pound at 225°F to 250°F. A typical 12-14 pound packer brisket will take 12 to 18 hours total, depending on the smoker type, meat thickness, and how well it holds temperature. Pellet grills and offset smokers can vary slightly due to airflow and heat consistency. Always cook to internal temperature rather than a strict time estimate, since factors like the stall, humidity, and fat cap thickness can shift your total cook time by several hours.
 
 ### What internal temperature should brisket be when done?
-Brisket is done when it reaches an internal temperature of 203°F to 205°F in the thickest part of the flat. At this range, the collagen and connective tissue have fully broken down, giving you that tender, sliceable texture pitmasters aim for. Don't rely on temperature alone, though, probe the meat with a thermometer or skewer; it should slide in with little resistance, like butter. If it still feels tough at 203°F, keep cooking and check again every 20-30 minutes until it probes tender.
+Many briskets become probe-tender between roughly 195°F and 205°F in the thickest part of the flat, but that range is a checkpoint, not a guarantee. Probe the meat with a thermometer or skewer; it should slide in with little resistance. If it still feels tough, keep cooking and check again every 20-30 minutes until it probes tender.
 
 ### How do I get past the brisket stall?
 Wrap the brisket in butcher paper or foil once it hits 150°F to 165°F internal temperature to power through the stall. The stall happens when evaporative cooling from the surface counteracts the smoker's heat, stalling temperature rise for hours. Wrapping (the "Texas crutch") traps heat and moisture, pushing the brisket past this plateau faster. Butcher paper preserves more bark than foil, which creates a softer, steamed texture. Either method can shave 1-2 hours off your total cook time.
@@ -123,7 +129,7 @@ Wrap the brisket in butcher paper or foil once it hits 150°F to 165°F internal
 Smoking at 250°F is generally better for most home cooks, cutting cook time by 2-3 hours compared to 225°F while still producing tender, juicy results. Lower temps like 225°F give more time for smoke penetration and bark development, which competition BBQ cooks often prefer for deeper flavor. Pellet grills hold steady at either temp easily, while offset smokers may drift, so choose based on how much you can monitor the fire. Both temperatures work, consistency matters more than the exact number.
 
 ### How long should brisket rest after smoking?
-Rest brisket for at least 1 hour, and ideally up to 2-4 hours, wrapped in towels inside a dry cooler. Resting allows the internal juices to redistribute throughout the meat instead of spilling out when you slice it, resulting in a moister final product. This "hold" period also lets residual heat continue tenderizing the connective tissue. Skipping the rest is one of the most common mistakes that leads to dry, less flavorful brisket, even if the cook itself went perfectly.
+Rest brisket for at least 1 hour before slicing. For a longer hold, use a food thermometer and keep it at 140°F or warmer; a dry cooler alone does not guarantee a safe holding temperature. Resting gives the juices time to settle and can improve slicing. If the meat is no longer being held at 140°F or above, follow USDA guidance and refrigerate it within two hours.
 
 
 <script type="application/ld+json">
@@ -144,7 +150,7 @@ Rest brisket for at least 1 hour, and ideally up to 2-4 hours, wrapped in towels
       "name": "What internal temperature should brisket be when done?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Brisket is done when it reaches an internal temperature of 203\u00b0F to 205\u00b0F in the thickest part of the flat. At this range, the collagen and connective tissue have fully broken down, giving you that tender, sliceable texture pitmasters aim for. Don't rely on temperature alone, though, probe the meat with a thermometer or skewer; it should slide in with little resistance, like butter. If it still feels tough at 203\u00b0F, keep cooking and check again every 20-30 minutes until it probes tender."
+        "text": "Many briskets become probe-tender between roughly 195\u00b0F and 205\u00b0F in the thickest part of the flat, but that range is a checkpoint, not a guarantee. Probe the meat with a thermometer or skewer; it should slide in with little resistance. If it still feels tough, keep cooking and check again every 20-30 minutes until it probes tender."
       }
     },
     {
@@ -168,7 +174,7 @@ Rest brisket for at least 1 hour, and ideally up to 2-4 hours, wrapped in towels
       "name": "How long should brisket rest after smoking?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Rest brisket for at least 1 hour, and ideally up to 2-4 hours, wrapped in towels inside a dry cooler. Resting allows the internal juices to redistribute throughout the meat instead of spilling out when you slice it, resulting in a moister final product. This \"hold\" period also lets residual heat continue tenderizing the connective tissue. Skipping the rest is one of the most common mistakes that leads to dry, less flavorful brisket, even if the cook itself went perfectly."
+        "text": "Rest brisket for at least 1 hour before slicing. For a longer hold, use a food thermometer and keep it at 140\u00b0F or warmer; a dry cooler alone does not guarantee a safe holding temperature. Resting gives the juices time to settle and can improve slicing. If the meat is no longer being held at 140\u00b0F or above, follow USDA guidance and refrigerate it within two hours."
       }
     }
   ]

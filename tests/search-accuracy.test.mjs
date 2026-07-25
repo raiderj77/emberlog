@@ -21,7 +21,9 @@ test("brisket timing guide answers the visible query with sourced planning range
   assert.match(article.body, /thermoworks\.com/);
   assert.match(article.body, /amazingribs\.com/);
   assert.match(article.body, /at or above <strong>140°F<\/strong>/);
-  assert.match(articlesSource, /\.\.\.BRISKET_TIMING_ARTICLE/);
+  assert.equal(article.slug, "how-long-to-smoke-a-brisket");
+  assert.equal(article.category, "brisket");
+  assert.match(articlesSource, /^\s*BRISKET_TIMING_ARTICLE,/m);
 });
 
 test("visible date-only article dates do not shift to the prior day", async () => {
@@ -42,6 +44,21 @@ test("brisket timing guide avoids unsupported finish and holding guarantees", ()
   assert.doesNotMatch(copy, /cook to temperature instead of the clock/i);
   assert.match(copy, /finish.*probe|probe.*finish/is);
   assert.match(copy, /not a guarantee|not.*guarantee/i);
+});
+
+test("published guidance does not promise an unmonitored cooler is food-safe", async () => {
+  const articlesSource = await readFile(new URL("../lib/articles.js", import.meta.url), "utf8");
+
+  assert.doesNotMatch(
+    articlesSource,
+    /holds safely and well|holds the internal temperature safely|will hold safely/i,
+  );
+  assert.doesNotMatch(
+    articlesSource,
+    /cooler[^.\r\n]{0,160}(?:holds safely|safely above|will hold safely|with no problem)/i,
+  );
+  assert.match(articlesSource, /food thermometer/);
+  assert.match(articlesSource, /145°F with a 3-minute rest/);
 });
 
 test("guide collections keep one canonical card and route per slug", () => {
