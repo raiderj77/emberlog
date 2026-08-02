@@ -17,7 +17,8 @@ test("brisket timing guide answers the visible query with sourced planning range
   assert.match(article.answer, /1 to 1\.5 hours per pound/);
   assert.match(article.answer, /planning range/);
   assert.match(article.body, /fsis\.usda\.gov/);
-  assert.match(article.body, /oklahomajoes\.com/);
+  assert.match(article.body, /reynoldsbrands\.com\/tips-and-how-tos\/smoking-brisket-gas-grill/);
+  assert.doesNotMatch(article.body, /oklahomajoes\.com\/blogs\/how-tos\/brisket-rub-recipes-and-smoking-tips/);
   assert.match(article.body, /traeger\.com/);
   assert.match(article.body, /thermoworks\.com/);
   assert.match(article.body, /amazingribs\.com/);
