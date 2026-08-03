@@ -16,9 +16,11 @@ test("Amazon links use the site-wide approved associate tag", () => {
 test("affiliate links and disclosures meet the documented requirements", () => {
   const gear = read("components/GearForCook.jsx");
   const footer = read("components/SiteFooter.jsx");
+  const disclosure = "As an Amazon Associate I earn from qualifying purchases.";
 
   assert.match(gear, /rel="sponsored nofollow noopener"/);
-  assert.match(gear, /As an Amazon Associate I earn from qualifying purchases\./);
+  assert.match(gear, /If you purchase through these links,\s+I may earn a commission at no additional cost to you\./);
+  assert.ok(gear.indexOf(disclosure) < gear.indexOf("href={amazonUrl(it.q)}"));
   assert.match(footer, /As an\s+Amazon Associate I earn from qualifying purchases\./);
   assert.doesNotMatch(footer, /As an As an Amazon Associate/);
 });
