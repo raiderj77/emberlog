@@ -25,6 +25,11 @@ export default function GearForCook({ protein }) {
         <ShoppingCart className="h-4 w-4 text-ember" />
         Gear for this cook
       </div>
+      <p className="mt-3 rounded-lg border border-line bg-paper px-3 py-2 text-sm leading-relaxed text-muted">
+        <strong className="text-ink">Affiliate disclosure:</strong>{" "}
+        As an Amazon Associate I earn from qualifying purchases. If you purchase through these links,
+        I may earn a commission at no additional cost to you.
+      </p>
       <div className="mt-3 grid gap-2 sm:grid-cols-2">
         {items.map((it) => (
           <a
@@ -41,9 +46,6 @@ export default function GearForCook({ protein }) {
           </a>
         ))}
       </div>
-      <p className="mt-3 text-xs text-muted">
-        As an Amazon Associate I earn from qualifying purchases.
-      </p>
     </div>
   );
 }
