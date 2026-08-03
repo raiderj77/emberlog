@@ -3,6 +3,7 @@ import { useState } from "react";
 import { WOODS, MEATS_FOR_WOOD } from "@/lib/woods";
 import { Trees } from "lucide-react";
 import Link from "next/link";
+import AmazonCategoryLink from "@/components/AmazonCategoryLink";
 
 const STRENGTH_COLOR = {
   "Mild": "bg-emerald-100 text-emerald-800",
@@ -67,6 +68,11 @@ export default function WoodPairing() {
         <Trees className="h-5 w-5 shrink-0 text-ember" />
         <p>Wood is a seasoning, aim for thin blue smoke, not billowing white. Blend strong woods with neutral oak to tame them. Full guide: <Link href="/guides/best-wood-for-smoking/" className="font-semibold text-ember-600 underline">Best Wood for Smoking</Link>.</p>
       </div>
+
+      <AmazonCategoryLink
+        label="smoking wood chunks"
+        query="smoking wood chunks"
+      />
     </div>
   );
 }

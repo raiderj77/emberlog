@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { TEMPS } from "@/lib/temps";
 import { Thermometer, Check, X } from "lucide-react";
+import AmazonCategoryLink from "@/components/AmazonCategoryLink";
 
 // Flat list for the checker (label + safeMin).
 const FLAT = TEMPS.flatMap((g) => g.items.map((i) => ({ ...i, group: g.group })));
@@ -69,6 +70,11 @@ export default function DonenessTemps() {
       <p className="rounded-lg border border-line bg-paper p-4 text-xs leading-relaxed text-muted">
         Safe minimum internal temperatures are from the USDA Food Safety and Inspection Service (FSIS). BBQ target temperatures are texture goals from common practice, not food-safety numbers. This is general information, not professional food-safety advice; always follow current USDA guidance and confirm the safe minimum with a thermometer before serving.
       </p>
+
+      <AmazonCategoryLink
+        label="instant-read meat thermometers"
+        query="instant read meat thermometer"
+      />
     </div>
   );
 }
