@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { Soup, AlertTriangle } from "lucide-react";
 import Link from "next/link";
+import AmazonCategoryLink from "@/components/AmazonCategoryLink";
 
 // Approximate grams of salt per teaspoon by brand.
 const SALT = { "Diamond Crystal kosher": 2.8, "Morton kosher": 4.8, "Table / fine sea": 6.0 };
@@ -61,6 +62,11 @@ export default function DryBrine() {
         <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
         <p>Salt amounts are for flavor. Always cook meat to its <Link href="/tools/doneness-temps/" className="font-semibold underline">USDA safe minimum temperature</Link> regardless of brining.</p>
       </div>
+
+      <AmazonCategoryLink
+        label="digital gram scales for kitchen use"
+        query="digital gram scale kitchen"
+      />
     </div>
   );
 }
