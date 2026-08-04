@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import ToolShell from "@/components/ToolShell";
 import SmokeTime from "@/components/calc/SmokeTime";
 import { SMOKE_PRESETS, getSmokePreset } from "@/lib/smokePresets";
+import { compactDescription, compactTitle } from "@/lib/seo";
 
 export function generateStaticParams() {
   return SMOKE_PRESETS.map((p) => ({ preset: p.slug }));
@@ -14,18 +16,19 @@ export async function generateMetadata({ params }) {
   if (!p) return {};
   const canonical = `/tools/smoke-time/${p.slug}/`;
   return {
-    title: p.title,
-    description: p.desc,
+    title: compactTitle(p.title),
+    description: compactDescription(p.desc),
     keywords: p.keywords,
     alternates: { canonical },
-    openGraph: { images: ["/og.png"], title: p.title, description: p.desc, url: canonical },
+    openGraph: { images: ["/og.png"], title: compactTitle(p.title, 65), description: compactDescription(p.desc), url: canonical },
+    twitter: { card: "summary_large_image", images: ["/og.png"], title: compactTitle(p.title, 65), description: compactDescription(p.desc) },
   };
 }
 
 export default async function Page({ params }) {
   const { preset } = await params;
   const p = getSmokePreset(preset);
-  if (!p) return null;
+  if (!p) notFound();
 
   return (
     <ToolShell
@@ -62,7 +65,7 @@ export default async function Page({ params }) {
         <p className="mt-8 text-sm text-muted">
           Smoking something else? Try the{" "}
           <Link href="/tools/smoke-time/" className="font-semibold text-ember-600 hover:text-ember-700">full Smoke Time Calculator</Link>{" "}
-          for every protein, or browse all{" "}
+          for the supported meats, or browse all{" "}
           <Link href="/tools/" className="font-semibold text-ember-600 hover:text-ember-700">pitmaster tools</Link>.
         </p>
       </div>

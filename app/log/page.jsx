@@ -2,19 +2,14 @@ import { SITE } from "@/lib/site";
 import { Container, Breadcrumb } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 import CookLog from "@/components/CookLog";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Free BBQ Cook Log",
   description:
-    "A free, hardware-agnostic BBQ cook log. Track multiple meats and probes, chart the temperature curve, log your timeline, and export to CSV. No account, works offline, data stays on your device.",
-  alternates: { canonical: "/log/" },
-  openGraph: { images: ["/og.png"],
-    title: `Free BBQ Cook Log · ${SITE.name}`,
-    description:
-      "Track multiple meats and probes, chart the temperature curve, and export your data. Free, no account, works on any device.",
-    url: "/log/",
-  },
-};
+    "A free, hardware-agnostic BBQ cook log. Track meats and probes, chart readings, log a timeline, and export backups. No account; core pages may work offline after loading.",
+  canonical: "/log/",
+});
 
 export default function LogPage() {
   const ld = {
@@ -26,7 +21,7 @@ export default function LogPage() {
     operatingSystem: "Any (web browser)",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description:
-      "A free, hardware-agnostic BBQ cook log with multi-meat and multi-probe tracking, temperature charts, and CSV export.",
+      "A free, hardware-agnostic BBQ cook log with multiple named probe channels, temperature charts, full JSON backup, and probe-reading CSV export.",
   };
   return (
     <>

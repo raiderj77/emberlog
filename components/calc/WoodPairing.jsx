@@ -23,9 +23,9 @@ export default function WoodPairing() {
 
   return (
     <div className="space-y-6">
-      <div className="inline-flex rounded-lg border border-line bg-white p-1 text-sm">
-        <button onClick={() => setMode("meat")} className={`rounded-md px-4 py-1.5 font-medium ${mode === "meat" ? "bg-ember text-white" : "text-muted"}`}>By meat</button>
-        <button onClick={() => setMode("wood")} className={`rounded-md px-4 py-1.5 font-medium ${mode === "wood" ? "bg-ember text-white" : "text-muted"}`}>By wood</button>
+      <div role="group" aria-label="Pairing search mode" className="inline-flex rounded-lg border border-line bg-white p-1 text-sm">
+        <button type="button" aria-pressed={mode === "meat"} onClick={() => setMode("meat")} className={`min-h-11 rounded-md px-4 py-2 font-medium ${mode === "meat" ? "bg-ember text-white" : "text-muted"}`}>By meat</button>
+        <button type="button" aria-pressed={mode === "wood"} onClick={() => setMode("wood")} className={`min-h-11 rounded-md px-4 py-2 font-medium ${mode === "wood" ? "bg-ember text-white" : "text-muted"}`}>By wood</button>
       </div>
 
       {mode === "meat" ? (

@@ -1,21 +1,21 @@
 # Pitmaster Log, Free BBQ Cook Log & Pitmaster Calculators
 > https://pitmasterlog.com
 
-Pitmaster Log is a free, hardware-agnostic BBQ cook log plus a set of fast, accurate calculators for smoking and barbecue. Log every smoke, plan every cook, and repeat your best results. Built by Jason Ramirez, an independent developer, it runs in any browser, works on any phone or computer, and keeps your cook data on your own device, nothing is uploaded to a server.
+Pitmaster Log is a free, hardware-agnostic BBQ cook log plus focused planning calculators and reference tools. Built by Jason Ramirez, an independent software developer, it runs in a browser and keeps cook-log data on the user's device rather than uploading it to an application server.
 
 Every tool is free with no trial countdown. Food-safety temperatures come from the USDA Food Safety and Inspection Service (FSIS), with a clear line drawn between safe-minimum temperatures and the higher texture targets BBQ cooks use. This is an independent project, not affiliated with or endorsed by any thermometer, smoker, or grill manufacturer.
 
 ## Tools
 
-- [Smoke Time Calculator](https://pitmasterlog.com/tools/smoke-time/): Estimate how long to smoke brisket, pork butt, ribs, and more by weight and cooker temperature, working back from your target serving time.
-- [Meat Per Person Calculator](https://pitmasterlog.com/tools/meat-per-person/): Calculate how much raw meat to buy per guest, accounting for cook loss, bone-in vs boneless, and appetite.
-- [Dry Brine Salt Calculator](https://pitmasterlog.com/tools/dry-brine/): Get the exact salt amount and timing for a dry brine based on meat weight.
-- [Doneness Temperature Chart](https://pitmasterlog.com/tools/doneness-temps/): USDA safe-minimum internal temperatures alongside the higher texture targets BBQ cooks use, for every common cut.
-- [Wood Pairing Finder](https://pitmasterlog.com/tools/wood-pairing/): Match smoking wood to the meat you're cooking for the right level of smoke flavor.
+- [Smoke Time Calculator](https://pitmasterlog.com/tools/smoke-time/): Estimate planning time for supported meats at the listed pit temperature, then work back from a target serving time.
+- [Meat Per Person Calculator](https://pitmasterlog.com/tools/meat-per-person/): Estimate how much raw meat to buy per guest, accounting for cook loss, bone-in vs boneless, and appetite.
+- [Dry Brine Salt Calculator](https://pitmasterlog.com/tools/dry-brine/): Estimate salt amount and timing for a dry brine based on meat weight.
+- [Doneness Temperature Chart](https://pitmasterlog.com/tools/doneness-temps/): USDA safe-minimum internal temperatures alongside commonly used texture checkpoints for supported foods.
+- [Wood Pairing Finder](https://pitmasterlog.com/tools/wood-pairing/): Explore subjective smoking-wood flavor suggestions for different meats and vegetables.
 
 ## Cook Log
 
-- [BBQ Cook Log](https://pitmasterlog.com/log/): Free, private, browser-based log to record every smoke, cooker, temperatures, times, and notes, and export everything to CSV anytime. Data stays on your device.
+- [BBQ Cook Log](https://pitmasterlog.com/log/): Free, browser-based log to record each smoke, cooker, temperatures, times, and notes. Cook data stays on your device; download a full JSON backup or export probe readings as CSV.
 
 ## Guides
 
@@ -33,20 +33,28 @@ Every tool is free with no trial countdown. Food-safety temperatures come from t
 - [Smoked Chicken Wings](https://pitmasterlog.com/guides/smoked-chicken-wings/): Smoked wings with crispy skin, including the high-heat finish.
 - [How to Smoke a Turkey](https://pitmasterlog.com/guides/how-to-smoke-a-turkey/): Smoking a whole turkey, brining, temps, and timing for the holidays.
 - [How to Smoke Beef Ribs](https://pitmasterlog.com/guides/how-to-smoke-beef-ribs/): Beef plate ribs, the "brisket on a stick" method from trim to rest.
-- [How to Smoke Tri-Tip](https://pitmasterlog.com/guides/how-to-smoke-tri-tip/): Tri-tip with a smoke-then-sear approach for a medium-rare finish.
+- [How to Smoke Tri-Tip](https://pitmasterlog.com/guides/how-to-smoke-tri-tip/): Reverse-seared tri-tip using the USDA 145°F endpoint and required rest.
 - [How to Smoke Prime Rib](https://pitmasterlog.com/guides/how-to-smoke-prime-rib/): Smoked prime rib, seasoning, target temps, and reverse sear.
 - [How to Smoke Salmon](https://pitmasterlog.com/guides/how-to-smoke-salmon/): Hot-smoking salmon, cure, temperatures, and texture.
 - [Smoked Mac and Cheese](https://pitmasterlog.com/guides/smoked-mac-and-cheese/): A classic smoked BBQ side dish, start to finish.
 - [Smoker Temperature Guide](https://pitmasterlog.com/guides/smoker-temperature-guide/): Choosing the right smoker temperature for different meats and results.
-- [Meat Internal Temperature Chart](https://pitmasterlog.com/guides/meat-internal-temperature-chart/): Safe-minimum and target internal temperatures for all common smoked meats.
+- [Meat Internal Temperature Chart](https://pitmasterlog.com/guides/meat-internal-temperature-chart/): Safe-minimum temperatures and separate texture notes for supported smoked foods.
 - [Best Wood for Smoking](https://pitmasterlog.com/guides/best-wood-for-smoking/): Which smoking woods pair with which meats, and the flavors each one adds.
 - [How Much Meat Per Person](https://pitmasterlog.com/guides/how-much-meat-per-person/): How much meat to buy per guest for a BBQ, by cut and appetite.
 - [Dry Brine Guide](https://pitmasterlog.com/guides/dry-brine-guide/): How dry brining works, salt ratios, and timing for better flavor and texture.
 - [First Smoke: Beginner's Guide](https://pitmasterlog.com/guides/first-smoke-beginners-guide/): A beginner's first smoke, gear, fire management, and what to cook first.
 - [Why Keep a BBQ Cook Log](https://pitmasterlog.com/guides/why-keep-a-bbq-cook-log/): How logging your cooks helps you dial in your cooker and repeat great results.
+- [Brisket Stall Temperature](https://pitmasterlog.com/guides/brisket-stall-temperature-why-it-happens-and-when-to-wrap/): Evaporative cooling, stall timing, and wrapping options.
+- [Offset Smoker vs Pellet Grill](https://pitmasterlog.com/guides/offset-smoker-vs-pellet-grill-which-actually-makes-better-brisket/): Practical tradeoffs without claiming one cooker guarantees a better result.
+- [Brisket Probe-Tender Test](https://pitmasterlog.com/guides/brisket-probe-tender-test-what-it-really-means-at-203f/): Why tenderness is a texture check rather than one exact number.
+- [3-2-1 Ribs vs No Wrap](https://pitmasterlog.com/guides/pork-ribs-321-method-vs-no-wrap-the-honest-tradeoffs/): Timing, bark, and texture tradeoffs between methods.
+- [How to Trim a Brisket Flat](https://pitmasterlog.com/guides/how-to-trim-a-brisket-flat-without-losing-too-much-fat-cap/): A focused guide to protecting the flat while trimming.
 
 ## About
 
 - [About Pitmaster Log](https://pitmasterlog.com/about/): Why Pitmaster Log exists, how food-safety temperatures are sourced, and the independent developer behind it.
+- [Editorial Standards](https://pitmasterlog.com/editorial-standards/): Source hierarchy, author qualifications, AI-use disclosure, corrections, and commercial independence.
 - [Contact](https://pitmasterlog.com/contact/): Questions and suggestions.
 - [Disclaimer](https://pitmasterlog.com/disclaimer/): Food-safety and general-information disclaimer.
+
+This file is a discovery aid and content summary. It does not guarantee search-engine or AI-system inclusion or ranking.

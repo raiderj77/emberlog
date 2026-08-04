@@ -1,94 +1,49 @@
 # Pitmaster Log
 
-A free, hardware-agnostic **BBQ cook log + pitmaster toolkit**, built as a static Next.js PWA. Local-first (no backend, no accounts), AdSense/Amazon-ready, full SEO/AEO/GEO.
+Pitmaster Log is a free, hardware-agnostic BBQ cook log and planning toolkit created by Jason Ramirez. Cook records stay in browser storage; the application has no account system or cook-data backend.
 
-Created by Jason Ramirez.
+## Current product
 
----
-
-## What's inside
-
-- **Cook log** (`/log`) — multi-meat / multi-probe logging, temperature-curve chart, timeline, ratings, **CSV + JSON export**, **shareable cook card**. Data stored in the browser (localStorage), never uploaded.
-- **5 calculators** (`/tools`) — smoke time (+ start-time planner), meat per person, dry brine salt, doneness temps (USDA), wood pairing.
-- **9 guides** (`/guides`) — answer-first, FAQ-schema'd articles for SEO/AEO/GEO.
-- **Legal** — privacy (AdSense/cookies/GDPR/CCPA), terms, disclaimer (Amazon affiliate + food safety), contact.
-- **PWA** — installable, offline service worker, icons, manifest.
-- **SEO** — per-page metadata, Open Graph, sitemap.xml, robots.txt, and JSON-LD: Organization, WebSite, WebApplication, SoftwareApplication, Article, FAQPage, BreadcrumbList, ItemList.
+- Browser cook log with multiple named probe channels, charts, timeline events, ratings, full JSON backup, and probe-reading CSV export.
+- Five free tools: smoke-time planner, meat-per-person estimator, dry-brine calculator, USDA doneness reference, and wood-pairing finder.
+- Thirty searchable BBQ guides plus an answer-first guide index.
+- Installable PWA. Core pages can remain available after a successful online load; offline behavior depends on the browser and cache state.
+- Opt-in Google Analytics with Global Privacy Control support. Cook-log and calculator values are not intentionally sent to analytics.
+- Disclosed Amazon Associate links using the configured `pitmasterlog-20` tag.
+- AdSense publisher metadata and `ads.txt` are present, but display ads are not loaded.
 
 ## Stack
-Next.js 14 (App Router, JS) · `output: 'export'` static · Tailwind 3 · lucide-react · zero runtime backend.
 
----
+- Next.js 16 App Router
+- React 19
+- Tailwind CSS 3
+- Node test runner and ESLint
+- Vercel deployment through GitHub
 
-## Run locally
+## Local development
+
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # outputs static site to ./out
+npm run dev
+npm test
+npm run lint
+npm run build
 ```
 
----
+`npm run check` runs lint and the production build; `npm run build` runs tests first through the `prebuild` script.
 
-## Deploy
+## Content and safety boundaries
 
-### Option A — Vercel CLI (fastest, no GitHub needed)
-```bash
-npm install
-npx vercel         # log in, accept defaults (auto-detects Next.js) -> preview URL
-npx vercel --prod  # production URL
-```
+Food-safety endpoints must be grounded in current primary USDA FSIS guidance. Common BBQ cook times and probe-tender targets are planning or texture estimates, not safety endpoints. See `/editorial-standards/` and `tests/` before changing safety language.
 
-### Option B — GitHub + Vercel (auto-deploy on push)
-```bash
-git init
-git add -A
-git commit -m "Pitmaster Log initial"
-# with the GitHub CLI:
-gh repo create emberlog --private --source=. --remote=origin --push
-# or create the repo on github.com, then:
-# git remote add origin https://github.com/<you>/emberlog.git && git push -u origin main
-```
-Then on vercel.com: **Add New → Project → Import** the repo. It auto-detects Next.js. Every push redeploys.
+The named author is an independent software developer and does not claim professional food-safety, culinary, nutrition, or health credentials. Do not add reviewer credentials unless that review actually occurred and the reviewer can be identified.
 
-### One-liner for Claude Code (local)
-Open this folder in Claude Code and say:
-> "Push this to a new private GitHub repo called `emberlog` and deploy it to Vercel production."
+## Monetization boundaries
 
-Claude Code uses your local `gh` + `vercel` auth to do it.
+- Keep the exact Amazon disclosure visible before qualifying affiliate links and retain `rel="sponsored nofollow noopener"`.
+- Do not load AdSense merely because publisher metadata exists. Before enabling ads for visitors in the EEA, UK, or Switzerland, implement a Google-certified CMP and recheck privacy copy, CSP, layout shift, mobile readability, and accidental-click risk.
+- Keep ads and affiliate decisions separate from food-safety guidance.
 
----
+## Configuration
 
-## Rebrand / configure — one file: `lib/site.js`
-```js
-SITE.name        // "Pitmaster Log"  -> changes brand everywhere
-SITE.domain      // "emberlog.app"
-SITE.url         // "https://emberlog.app"  (set to your real domain before launch)
-SITE.contactEmail
-SITE.amazonTag         // Amazon Associates tag for affiliate links
-SITE.adsensePublisherId // ca-pub-XXXX (leave blank until approved)
-SITE.jurisdiction      // used in Terms
-```
-**Before launch:** confirm the name/domain are available (trademark + WHOIS), then set `SITE.url` to the real domain so canonical URLs, sitemap, OG, and JSON-LD are correct.
-
----
-
-## Adding stock photos (optional)
-The design is deliberately photo-optional (typographic + SVG/gradient + the ember flame mark) so it ships clean with no broken/placeholder image links. To add real photos:
-
-1. Drop JPG/WebP files in `public/images/`.
-2. Hero: edit the hero block in `app/page.jsx` (add an `<img>` / Next `<Image>`).
-3. Article headers: add an `image` field to each article object in `lib/articles.js` and render it in `app/guides/[slug]/page.jsx`.
-4. Free, commercial-use sources: **Pexels** and **Unsplash** (both allow commercial use; attribution appreciated, not required). Use your own cook photos where you can, it's stronger for E-E-A-T.
-
-Keep images optimized (≈1600px wide, compressed) since `images.unoptimized` is on for static export.
-
----
-
-## AdSense
-Placeholders are in place (`<AdSlot />` components + `public/ads.txt`). After approval:
-1. Put your publisher line in `public/ads.txt`.
-2. Add the AdSense script to `app/layout.jsx` `<head>` and set `SITE.adsensePublisherId`.
-3. Replace `<AdSlot />` placeholders with real ad units.
-
-## Food safety
-Safe-minimum temperatures are from USDA FSIS and are separated from BBQ "probe-tender" texture targets throughout. Content is general info, not professional advice; the disclaimer reflects this. Keep it accurate if you edit `lib/temps.js`.
+Brand, domain, author, contact, affiliate tag, and publisher ID live in `lib/site.js`. Deployment and domain settings are managed in the connected Vercel project; do not overwrite `.vercel/project.json` with another project mapping.

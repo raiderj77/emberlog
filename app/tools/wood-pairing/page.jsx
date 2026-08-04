@@ -1,15 +1,15 @@
 import ToolShell from "@/components/ToolShell";
 import WoodPairing from "@/components/calc/WoodPairing";
 import { getTool } from "@/lib/tools";
+import { pageMetadata } from "@/lib/metadata";
 
 const t = getTool("wood-pairing");
-export const metadata = {
+export const metadata = pageMetadata({
   title: t.title,
   description: t.desc,
-  alternates: { canonical: "/tools/wood-pairing/" },
+  canonical: "/tools/wood-pairing/",
   keywords: t.keywords,
-  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/wood-pairing/" },
-};
+});
 
 const faqs = [
   { q: "What is the best wood for smoking brisket?", a: "Oak is the classic balanced choice, with hickory for more punch. Mesquite works but is strong and best blended with oak to avoid bitterness." },

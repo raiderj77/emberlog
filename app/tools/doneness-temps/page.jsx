@@ -1,19 +1,19 @@
 import ToolShell from "@/components/ToolShell";
 import DonenessTemps from "@/components/calc/DonenessTemps";
 import { getTool } from "@/lib/tools";
+import { pageMetadata } from "@/lib/metadata";
 
 const t = getTool("doneness-temps");
-export const metadata = {
+export const metadata = pageMetadata({
   title: t.title,
   description: t.desc,
-  alternates: { canonical: "/tools/doneness-temps/" },
+  canonical: "/tools/doneness-temps/",
   keywords: t.keywords,
-  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/doneness-temps/" },
-};
+});
 
 const faqs = [
-  { q: "What is the safe internal temperature for chicken?", a: "All poultry, whole or ground, is safe at 165°F internal, measured in the thickest part away from bone (USDA FSIS)." },
-  { q: "What temperature is brisket done?", a: "For tenderness, brisket is cooked to about 200-205°F internal, well above the 145°F safe minimum for beef. Pull it when a probe slides in with little resistance." },
+  { q: "What is the safe internal temperature for chicken?", a: "USDA lists 165°F for all poultry. For a whole bird, check the thickest breast and the innermost thigh and wing without touching bone." },
+  { q: "What temperature is brisket done?", a: "The USDA minimum for whole beef cuts is 145°F followed by a 3-minute rest. Brisket is commonly cooked farther for texture; use 200-205°F only as a checkpoint and remove it when a probe slides into the flat with little resistance." },
   { q: "Do I need to rest meat after cooking?", a: "USDA recommends a 3-minute rest for whole cuts of beef, pork, lamb, and veal at 145°F. Large BBQ cuts benefit from much longer rests." },
 ];
 

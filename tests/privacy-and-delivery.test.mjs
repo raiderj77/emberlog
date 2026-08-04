@@ -12,6 +12,18 @@ test("uses Vercel-native delivery with a security-header baseline", () => {
   assert.match(config, /X-Content-Type-Options/);
   assert.match(config, /Referrer-Policy/);
   assert.match(config, /Permissions-Policy/);
+  assert.match(config, /process\.env\.NODE_ENV === "development"/);
+  assert.match(config, /isDevelopment \? " 'unsafe-eval'" : ""/);
+  assert.equal(config.match(/unsafe-eval/g)?.length, 1);
+});
+
+test("keeps service-worker lifecycle work and cache writes event-bound", () => {
+  const serviceWorker = read("public/sw.js");
+  assert.match(serviceWorker, /await self\.skipWaiting\(\)/);
+  assert.match(serviceWorker, /await self\.clients\.claim\(\)/);
+  assert.match(serviceWorker, /await cacheSuccessfulResponse\(request, response\)/);
+  assert.doesNotMatch(serviceWorker, /caches\.open\(CACHE\)\.then\([^\n]*cache\.put/);
+  assert.match(serviceWorker, /caches\.keys\(\)\.catch\(\(\) => \[\]\)/);
 });
 
 test("awaits Next 16 dynamic route parameters before rendering", () => {
@@ -23,6 +35,18 @@ test("awaits Next 16 dynamic route parameters before rendering", () => {
   }
   assert.match(guide, /export default async function ArticlePage/);
   assert.match(preset, /export default async function Page/);
+  assert.match(preset, /if \(!p\) notFound\(\)/);
+});
+
+test("install prompts stay hidden until privacy choices are resolved", () => {
+  const header = read("components/SiteHeader.jsx");
+  assert.match(header, /choice === "granted" \|\| choice === "denied" \|\| choice === "gpc"/);
+  assert.match(header, /pitmaster:privacy-choices/);
+  assert.match(header, /privacyResolved && !standalone/);
+  assert.match(header, /aria-current=\{isCurrentPath\(pathname, n\.href\) \? "page" : undefined\}/);
+  assert.match(header, /aria-current=\{isCurrentPath\(pathname, "\/"\) \? "page" : undefined\}/);
+  assert.match(header, /aria-controls="mobile-navigation"/);
+  assert.match(header, /id="mobile-navigation"/);
 });
 
 test("loads Google Analytics only after an explicit choice", () => {
@@ -32,6 +56,7 @@ test("loads Google Analytics only after an explicit choice", () => {
   assert.match(layout, /<ConsentManager \/>/);
   assert.match(consent, /nextChoice === "granted"/);
   assert.match(consent, /ga-disable-/);
+  assert.match(consent, /domain=\.pitmasterlog\.com/);
   assert.match(consent, /never receives your cook details/i);
 });
 
