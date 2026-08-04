@@ -9,6 +9,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [{ type: "host", value: "www\\.pitmasterlog\\.com" }],
+        destination: "https://pitmasterlog.com/:path*/",
+        permanent: true,
+      },
+      {
         source: "/guides/brisket-cook-time/",
         destination: "/guides/how-long-to-smoke-a-brisket/",
         permanent: true,
