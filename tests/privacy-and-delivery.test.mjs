@@ -17,6 +17,26 @@ test("uses Vercel-native delivery with a security-header baseline", () => {
   assert.equal(config.match(/unsafe-eval/g)?.length, 1);
 });
 
+test("redirects the www hostname to the canonical apex", async () => {
+  const config = (await import("../next.config.mjs")).default;
+  const redirects = await config.redirects();
+  const redirect = redirects.find((entry) => (
+    entry.has?.some((condition) => condition.type === "host" && condition.value === "www\\.pitmasterlog\\.com")
+  ));
+
+  assert.deepEqual(redirect, {
+    source: "/:path*",
+    has: [{ type: "host", value: "www\\.pitmasterlog\\.com" }],
+    destination: "https://pitmasterlog.com/:path*/",
+    permanent: true,
+  });
+
+  const hostPattern = new RegExp(`^${redirect.has[0].value}$`);
+  assert.equal(hostPattern.test("www.pitmasterlog.com"), true);
+  assert.equal(hostPattern.test("wwwXpitmasterlogYcom"), false);
+  assert.equal(redirect.destination.endsWith("/:path*/"), true);
+});
+
 test("keeps service-worker lifecycle work and cache writes event-bound", () => {
   const serviceWorker = read("public/sw.js");
   assert.match(serviceWorker, /await self\.skipWaiting\(\)/);
