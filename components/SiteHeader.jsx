@@ -1,18 +1,23 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Flame, Menu, X, Download, Share, SquarePlus } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
+import { isCurrentPath } from "@/lib/navigation";
 
 const DISMISS_KEY = "emberlog:install-dismissed";
 
 export default function SiteHeader() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [deferred, setDeferred] = useState(null);
   const [isIOS, setIsIOS] = useState(false);
   const [standalone, setStandalone] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
   const [iosModal, setIosModal] = useState(false);
+  const [privacyResolved, setPrivacyResolved] = useState(false);
+  const closeModalRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -33,30 +38,89 @@ export default function SiteHeader() {
     const onInstalled = () => { setDeferred(null); setShowBanner(false); setStandalone(true); };
     window.addEventListener("appinstalled", onInstalled);
 
-    // Show the banner after a short delay if eligible and not dismissed.
-    let timer;
-    if (!isStandalone && !dismissed) {
-      timer = setTimeout(() => {
-        // Android/desktop: only if we captured a prompt. iOS: always (no prompt event exists).
-        setShowBanner((prev) => prev || ios || false);
-      }, 3500);
-    }
+    const savedPrivacy = (() => {
+      try { return localStorage.getItem("pitmasterlog_analytics_consent"); } catch { return null; }
+    })();
+    setPrivacyResolved(
+      navigator.globalPrivacyControl === true || savedPrivacy === "granted" || savedPrivacy === "denied",
+    );
+    const onPrivacyResolved = (event) => {
+      const choice = event.detail?.choice;
+      const resolved = choice === "granted" || choice === "denied" || choice === "gpc";
+      setPrivacyResolved(resolved);
+      if (!resolved) {
+        setShowBanner(false);
+        setIosModal(false);
+      }
+    };
+    const onPrivacyChoices = () => {
+      setPrivacyResolved(false);
+      setShowBanner(false);
+      setIosModal(false);
+    };
+    window.addEventListener("pitmaster:privacy-resolved", onPrivacyResolved);
+    window.addEventListener("pitmaster:privacy-choices", onPrivacyChoices);
+
     return () => {
       window.removeEventListener("beforeinstallprompt", onBIP);
       window.removeEventListener("appinstalled", onInstalled);
-      if (timer) clearTimeout(timer);
+      window.removeEventListener("pitmaster:privacy-resolved", onPrivacyResolved);
+      window.removeEventListener("pitmaster:privacy-choices", onPrivacyChoices);
     };
   }, []);
 
+  useEffect(() => {
+    if (!privacyResolved || standalone) return;
+    let dismissed = false;
+    try { dismissed = localStorage.getItem(DISMISS_KEY) === "1"; } catch {}
+    if (dismissed) return;
+
+    const timer = setTimeout(() => {
+      if (isIOS || deferred) setShowBanner(true);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, [privacyResolved, standalone, isIOS, deferred]);
+
   // When the install prompt becomes available on Android/desktop, reveal the banner (unless dismissed).
   useEffect(() => {
-    if (!deferred || standalone) return;
+    if (!deferred || standalone || !privacyResolved) return;
     let dismissed = false;
     try { dismissed = localStorage.getItem(DISMISS_KEY) === "1"; } catch {}
     if (!dismissed) setShowBanner(true);
-  }, [deferred, standalone]);
+  }, [deferred, standalone, privacyResolved]);
 
-  const canInstall = !standalone && (deferred || isIOS);
+  useEffect(() => {
+    if (!iosModal) return;
+    const previous = document.activeElement;
+    closeModalRef.current?.focus();
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIosModal(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const dialog = closeModalRef.current?.closest('[role="dialog"]');
+      const focusable = [...(dialog?.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])') || [])]
+        .filter((element) => !element.disabled && element.getAttribute("aria-hidden") !== "true");
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      previous?.focus?.();
+    };
+  }, [iosModal]);
+
+  const canInstall = privacyResolved && !standalone && (deferred || isIOS);
 
   async function install() {
     if (deferred) {
@@ -77,39 +141,39 @@ export default function SiteHeader() {
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-content items-center justify-between px-5 sm:px-6">
-          <Link href="/" className="flex items-center gap-2" aria-label={`${SITE.name} home`}>
+          <Link href="/" className="flex items-center gap-2" aria-label={`${SITE.name} home`} aria-current={isCurrentPath(pathname, "/") ? "page" : undefined}>
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ember text-white shadow-sm">
               <Flame className="h-5 w-5" strokeWidth={2.4} />
             </span>
             <span className="font-display text-xl font-bold tracking-tight">{SITE.name}</span>
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav aria-label="Primary navigation" className="hidden items-center gap-1 md:flex">
             {NAV.map((n) => (
-              <Link key={n.href} href={n.href} className="rounded-lg px-3 py-2 text-sm font-medium text-ink/80 transition hover:bg-white hover:text-ink">
+              <Link key={n.href} href={n.href} aria-current={isCurrentPath(pathname, n.href) ? "page" : undefined} className="inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium text-ink/80 transition hover:bg-white hover:text-ink">
                 {n.label}
               </Link>
             ))}
             {canInstall && (
-              <button onClick={install} className="ml-1 inline-flex items-center gap-1.5 rounded-lg border border-ember/40 px-3 py-2 text-sm font-semibold text-ember-700 transition hover:bg-ember/5">
+              <button onClick={install} className="ml-1 inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-ember/40 px-3 py-2 text-sm font-semibold text-ember-700 transition hover:bg-ember/5">
                 <Download className="h-4 w-4" /> Install app
               </button>
             )}
-            <Link href="/log/" className="ml-2 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-smoke">
+            <Link href="/log/" className="ml-2 inline-flex min-h-11 items-center rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-smoke">
               Open the log
             </Link>
           </nav>
 
-          <button className="rounded-lg p-2 text-ink md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu" aria-expanded={open}>
+          <button className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-ink md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu" aria-expanded={open} aria-controls="mobile-navigation">
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {open && (
           <div className="border-t border-line bg-paper md:hidden">
-            <div className="mx-auto flex max-w-content flex-col px-5 py-2 sm:px-6">
+            <nav id="mobile-navigation" aria-label="Mobile navigation" className="mx-auto flex max-w-content flex-col px-5 py-2 sm:px-6">
               {NAV.map((n) => (
-                <Link key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 text-base font-medium text-ink/90 hover:bg-white">
+                <Link key={n.href} href={n.href} aria-current={isCurrentPath(pathname, n.href) ? "page" : undefined} onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 text-base font-medium text-ink/90 hover:bg-white">
                   {n.label}
                 </Link>
               ))}
@@ -121,7 +185,7 @@ export default function SiteHeader() {
               <Link href="/log/" onClick={() => setOpen(false)} className="my-2 rounded-lg bg-ink px-4 py-3 text-center text-base font-semibold text-white">
                 Open the log
               </Link>
-            </div>
+            </nav>
           </div>
         )}
       </header>
@@ -135,11 +199,11 @@ export default function SiteHeader() {
             </span>
             <div className="min-w-0 flex-1">
               <p className="font-display text-sm font-bold leading-tight sm:text-base">Install Pitmaster Log</p>
-              <p className="mt-0.5 text-xs leading-snug text-muted sm:text-sm">Add it to your home screen for one-tap access and offline cook logging. No app store.</p>
+              <p className="mt-0.5 text-xs leading-snug text-muted sm:text-sm">Add it to your home screen for one-tap access. Core pages may work offline after a successful online load. No app store.</p>
             </div>
             <div className="flex shrink-0 items-center gap-2">
-              <button onClick={install} className="rounded-lg bg-ember px-3 py-2 text-sm font-semibold text-white hover:bg-ember-600">Install</button>
-              <button onClick={dismiss} aria-label="Dismiss" className="rounded-lg p-2 text-muted hover:text-ink"><X className="h-4 w-4" /></button>
+              <button onClick={install} className="min-h-11 rounded-lg bg-ember px-3 py-2 text-sm font-semibold text-white hover:bg-ember-600">Install</button>
+              <button onClick={dismiss} aria-label="Dismiss install prompt" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-muted hover:text-ink"><X className="h-4 w-4" /></button>
             </div>
           </div>
         </div>
@@ -148,10 +212,10 @@ export default function SiteHeader() {
       {/* iOS instructions modal */}
       {iosModal && (
         <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/40 p-3 sm:items-center" onClick={() => setIosModal(false)}>
-          <div className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-card" onClick={(e) => e.stopPropagation()}>
+          <div role="dialog" aria-modal="true" aria-labelledby="ios-install-title" className="w-full max-w-sm rounded-2xl bg-white p-5 shadow-card" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <h2 className="font-display text-lg font-bold">Add to your home screen</h2>
-              <button onClick={() => setIosModal(false)} aria-label="Close" className="rounded-lg p-1.5 text-muted hover:text-ink"><X className="h-5 w-5" /></button>
+              <h2 id="ios-install-title" className="font-display text-lg font-bold">Add to your home screen</h2>
+              <button ref={closeModalRef} onClick={() => setIosModal(false)} aria-label="Close install instructions" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-muted hover:text-ink"><X className="h-5 w-5" /></button>
             </div>
             <p className="mt-2 text-sm text-muted">On iPhone or iPad, install Pitmaster Log from Safari in two taps:</p>
             <ol className="mt-4 space-y-3">
@@ -164,7 +228,7 @@ export default function SiteHeader() {
                 <span className="flex items-center gap-1.5">Choose <SquarePlus className="inline h-4 w-4 text-ember" /> <strong>Add to Home Screen</strong>, then tap Add.</span>
               </li>
             </ol>
-            <button onClick={() => { setIosModal(false); dismiss(); }} className="mt-5 w-full rounded-lg bg-ink py-2.5 text-sm font-semibold text-white hover:bg-smoke">Got it</button>
+            <button onClick={() => { setIosModal(false); dismiss(); }} className="mt-5 min-h-11 w-full rounded-lg bg-ink py-2.5 text-sm font-semibold text-white hover:bg-smoke">Got it</button>
           </div>
         </div>
       )}

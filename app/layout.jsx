@@ -27,13 +27,16 @@ const monoFont = Space_Mono({
 export const metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name}, ${SITE.tagline}`,
+    default: `${SITE.name} | Free BBQ Cook Log & Tools`,
     template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
   authors: [{ name: SITE.author }],
   creator: SITE.author,
+  other: {
+    "google-adsense-account": SITE.adsensePublisherId,
+  },
   keywords: [
     "bbq cook log",
     "smoker journal app",
@@ -47,11 +50,10 @@ export const metadata = {
     "pitmaster tools",
   ],
   manifest: "/manifest.webmanifest",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: SITE.name,
-    title: `${SITE.name}, ${SITE.tagline}`,
+    title: `${SITE.name} | Free BBQ Cook Log & Tools`,
     description: SITE.description,
     url: SITE.url,
     locale: SITE.locale,
@@ -59,7 +61,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name}, ${SITE.tagline}`,
+    title: `${SITE.name} | Free BBQ Cook Log & Tools`,
     description: SITE.description,
     images: ["/og.png"],
   },

@@ -63,6 +63,7 @@ export default function SiteFooter() {
           <h3 className="mb-3 text-sm font-semibold text-ink">Site</h3>
           <ul className="space-y-2 text-sm text-muted">
             <li><Link href="/about/" className="hover:text-ember-600">About</Link></li>
+            <li><Link href="/editorial-standards/" className="hover:text-ember-600">Editorial Standards</Link></li>
             <li><Link href="/contact/" className="hover:text-ember-600">Contact</Link></li>
             <li><Link href="/privacy/" className="hover:text-ember-600">Privacy Policy</Link></li>
             <li><Link href="/terms/" className="hover:text-ember-600">Terms of Use</Link></li>
@@ -76,8 +77,8 @@ export default function SiteFooter() {
         <div className="mx-auto max-w-content px-5 py-6 sm:px-6">
           <p className="text-xs leading-relaxed text-muted">
             Created by {SITE.author}. Cook data you enter is stored only in your browser, not on our
-            servers. Food-safety temperatures referenced on this site come from USDA FSIS and are
-            general information, not professional advice; always follow current USDA guidance. As an
+            servers. Food-safety endpoints are checked against USDA FSIS guidance and estimates are
+            labeled; see our <Link href="/editorial-standards/" className="underline hover:text-ink">editorial standards</Link>. This is general information, not professional advice. As an
             Amazon Associate I earn from qualifying purchases.
           </p>
           <p className="mt-3 text-xs text-muted">

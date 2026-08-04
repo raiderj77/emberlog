@@ -1,24 +1,17 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { SITE, absUrl } from "@/lib/site";
-import { ARTICLES } from "@/lib/articles";
-import { getAllPosts } from "@/lib/posts";
-import { uniqueBySlug } from "@/lib/collections";
+import { absUrl } from "@/lib/site";
+import { getAllGuides } from "@/lib/guides";
 import { Container, Breadcrumb, SectionLabel } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "BBQ & Smoking Guides",
   description:
     "Practical BBQ guides covering brisket, ribs, pork butt, chicken, turkey, salmon, beef ribs, wood pairing, smoker temperatures, and more. Straight answers backed by USDA food-safety guidance.",
-  alternates: { canonical: "/guides/" },
-  openGraph: {
-    images: ["/og.png"],
-    title: `BBQ & Smoking Guides · ${SITE.name}`,
-    description: "Straight-answer guides to smoking meat, from brisket to salmon.",
-    url: "/guides/",
-  },
-};
+  canonical: "/guides/",
+});
 
 const CATEGORIES = [
   { key: "brisket", label: "Brisket" },
@@ -32,7 +25,7 @@ const CATEGORIES = [
 ];
 
 export default function GuidesPage() {
-  const ALL = uniqueBySlug(ARTICLES, getAllPosts());
+  const ALL = getAllGuides();
 
   const ld = {
     "@context": "https://schema.org",

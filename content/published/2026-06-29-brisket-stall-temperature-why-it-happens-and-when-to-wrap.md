@@ -1,6 +1,7 @@
 ---
 title: "Brisket stall temperature: why it happens and when to wrap"
 date: "2026-06-29"
+updated: "2026-08-03"
 slug: "brisket-stall-temperature-why-it-happens-and-when-to-wrap"
 description: "The brisket stall hits most cooks between 150F and 170F and can last 2 to 6 hours. Here is why it happens and whether you should wrap through it or ride it out bare."
 status: published
@@ -59,7 +60,7 @@ If you are on a deadline, wrap in butcher paper when the brisket hits 165°F to 
 
 Your thermometer will start moving again, usually slowly at first, then more steadily. After the stall breaks, most briskets climb at roughly 1°F to 2°F per 10 to 15 minutes at 225°F to 250°F pit temp. If you have been stuck at 163°F for four hours and suddenly see 165°F, then 167°F over the next 30 minutes, the stall is breaking.
 
-Do not pull the brisket the moment the stall ends. The real finish line is probe tenderness in the thickest part of the flat, not a number on a screen. The point will always probe tender first because of its higher fat content. The flat is where briskets fail or succeed. Probe there, and keep cooking until it tells you it is ready.
+Do not pull the brisket simply because the stall ends. After verifying the USDA whole-beef endpoint of 145°F followed by a 3-minute rest, use a clean probe in several parts of the flat for the higher texture finish. The point often softens sooner, but briskets vary, so check both muscles rather than assuming an order.
 
 ## Frequently asked questions
 

@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { Users, AlertTriangle } from "lucide-react";
 import Link from "next/link";
+import { boundedNumber } from "@/lib/inputValidation";
 
 const CUTS = [
   { name: "Pulled pork (shoulder/butt)", yield: 0.5 },
@@ -21,34 +22,44 @@ export default function MeatPerPerson() {
   const [isMain, setIsMain] = useState(true);
   const [cutIdx, setCutIdx] = useState(0);
   const cut = CUTS[cutIdx];
+  const adultCount = boundedNumber(adults, { min: 0, max: 1_000, integer: true });
+  const kidCount = boundedNumber(kids, { min: 0, max: 1_000, integer: true });
+  const guestError = adultCount === null || kidCount === null
+    ? "Enter whole guest counts from 0 to 1,000."
+    : adultCount + kidCount === 0
+      ? "Enter at least one adult or child."
+      : null;
 
   const { cookedLbs, rawLbs, racks } = useMemo(() => {
+    if (guestError) return { cookedLbs: null, rawLbs: null, racks: null };
     const perAdult = APPETITE[appetite];
-    let cooked = (Number(adults) * perAdult) + (Number(kids) * perAdult * 0.5);
+    let cooked = (adultCount * perAdult) + (kidCount * perAdult * 0.5);
     if (!isMain) cooked *= 0.6;
     if (cut.perRack) {
-      const racks = Math.ceil((Number(adults) + Number(kids) * 0.5) * (isMain ? 0.75 : 0.5));
+      const racks = Math.ceil((adultCount + kidCount * 0.5) * (isMain ? 0.75 : 0.5));
       return { cookedLbs: cooked, rawLbs: null, racks };
     }
     const raw = cooked / cut.yield;
     return { cookedLbs: cooked, rawLbs: raw, racks: null };
-  }, [adults, kids, appetite, isMain, cut]);
+  }, [adultCount, kidCount, appetite, isMain, cut, guestError]);
 
   return (
     <div className="space-y-5">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block"><span className="mb-1 block text-sm font-medium">Adults</span><input type="number" min="0" value={adults} onChange={(e) => setAdults(e.target.value)} className="inp" /></label>
-        <label className="block"><span className="mb-1 block text-sm font-medium">Kids</span><input type="number" min="0" value={kids} onChange={(e) => setKids(e.target.value)} className="inp" /></label>
+        <label className="block"><span className="mb-1 block text-sm font-medium">Adults</span><input type="number" min="0" max="1000" step="1" value={adults} onChange={(e) => setAdults(e.target.value)} aria-invalid={guestError ? "true" : undefined} aria-describedby={guestError ? "guest-count-error" : undefined} className="inp" /></label>
+        <label className="block"><span className="mb-1 block text-sm font-medium">Kids</span><input type="number" min="0" max="1000" step="1" value={kids} onChange={(e) => setKids(e.target.value)} aria-invalid={guestError ? "true" : undefined} aria-describedby={guestError ? "guest-count-error" : undefined} className="inp" /></label>
         <label className="block"><span className="mb-1 block text-sm font-medium">Appetite</span><select value={appetite} onChange={(e) => setAppetite(e.target.value)} className="inp">{Object.keys(APPETITE).map((a) => <option key={a}>{a}</option>)}</select></label>
         <label className="block"><span className="mb-1 block text-sm font-medium">Cut</span><select value={cutIdx} onChange={(e) => setCutIdx(Number(e.target.value))} className="inp">{CUTS.map((c, i) => <option key={c.name} value={i}>{c.name}</option>)}</select></label>
       </div>
+
+      {guestError && <p id="guest-count-error" role="alert" className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm font-medium text-rose-800">{guestError}</p>}
 
       <label className="flex items-center gap-3 rounded-lg border border-line bg-white p-3">
         <input type="checkbox" checked={isMain} onChange={(e) => setIsMain(e.target.checked)} className="h-4 w-4 accent-ember" />
         <span className="text-sm">This meat is the <strong>main event</strong> (uncheck if it is one of several proteins or there are heavy sides)</span>
       </label>
 
-      <div className="rounded-xl border border-line bg-white p-5 shadow-card">
+      {!guestError && <div className="rounded-xl border border-line bg-white p-5 shadow-card" aria-live="polite" aria-atomic="true">
         <div className="flex items-center gap-2 text-sm font-medium text-muted"><Users className="h-4 w-4" /> You'll need about</div>
         {cut.perRack ? (
           <div className="mt-1 font-display text-3xl font-bold text-ember">{racks} rack{racks === 1 ? "" : "s"}</div>
@@ -58,7 +69,7 @@ export default function MeatPerPerson() {
             <div className="mt-1 text-sm text-muted">≈ {cookedLbs.toFixed(1)} lb cooked · this cut yields about {Math.round(cut.yield * 100)}% after cooking, so buy extra to cover the loss.</div>
           </>
         )}
-      </div>
+      </div>}
 
       <div className="flex gap-3 rounded-lg border border-line bg-paper p-4 text-sm text-muted">
         <AlertTriangle className="h-5 w-5 shrink-0 text-ember" />

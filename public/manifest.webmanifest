@@ -1,12 +1,11 @@
 {
   "name": "Pitmaster Log — BBQ Cook Log & Pitmaster Tools",
   "short_name": "Pitmaster Log",
-  "description": "A free BBQ cook log and pitmaster's toolkit. Log every smoke, plan every cook, nail it next time.",
+  "description": "A free BBQ cook log and pitmaster toolkit for recording cooks and using practical planning tools.",
   "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
-  "orientation": "portrait",
   "background_color": "#16131e",
   "theme_color": "#d6450f",
   "categories": ["food", "lifestyle", "utilities"],

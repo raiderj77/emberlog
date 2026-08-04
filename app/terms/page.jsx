@@ -1,11 +1,13 @@
+import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { Container, Breadcrumb } from "@/components/ui";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Terms of Use",
-  description: `Terms of Use for ${SITE.name}.`,
-  alternates: { canonical: "/terms/" },
-};
+  description: `Terms governing use of ${SITE.name}, its free browser tools, local cook data, third-party links, and food-safety information.`,
+  canonical: "/terms/",
+});
 
 export default function TermsPage() {
   return (
@@ -13,7 +15,7 @@ export default function TermsPage() {
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Terms of Use" }]} />
       <div className="mx-auto max-w-prose">
         <h1 className="font-display text-3xl font-bold tracking-tight">Terms of Use</h1>
-        <p className="mt-2 text-sm text-muted">Last updated: June 2026</p>
+        <p className="mt-2 text-sm text-muted">Last updated: August 3, 2026</p>
         <div className="prose-em mt-6">
           <p>By accessing or using {SITE.domain} (the "Site"), you agree to these Terms of Use. If you do not agree, please do not use the Site.</p>
 
@@ -24,7 +26,7 @@ export default function TermsPage() {
           <p>The Site and all tools, calculators, and content are provided "as is" and "as available" without warranties of any kind, express or implied, including accuracy, fitness for a particular purpose, or non-infringement. Cooking times, temperatures, quantities, and other outputs are estimates and general guidance only.</p>
 
           <h2>Food safety and assumption of risk</h2>
-          <p>Cooking involves inherent risks, including foodborne illness, fire, and burns. Information on this Site is not a substitute for professional advice or official guidance such as the USDA Food Safety and Inspection Service. You are solely responsible for safely preparing and cooking food, including verifying safe internal temperatures. See our Disclaimer for more.</p>
+          <p>Cooking involves inherent risks, including foodborne illness, fire, and burns. Information on this Site is not a substitute for professional advice or official USDA Food Safety and Inspection Service guidance. You are responsible for safe preparation, equipment operation, and thermometer checks. See the <Link href="/disclaimer/">disclaimer</Link> and <Link href="/editorial-standards/">editorial standards</Link>.</p>
 
           <h2>Limitation of liability</h2>
           <p>To the fullest extent permitted by law, {SITE.name} and its creator will not be liable for any indirect, incidental, or consequential damages, or any damages arising from your use of, or inability to use, the Site, its tools, or its content.</p>

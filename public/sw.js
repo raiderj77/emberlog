@@ -1,50 +1,89 @@
-// Pitmaster Log service worker, simple offline shell cache.
-const CACHE = "pitmasterlog-v1";
+// Pitmaster Log service worker. Core routes are cached after a successful response.
+const CACHE = "pitmasterlog-v2";
 const SHELL = ["/", "/log/", "/tools/", "/guides/", "/manifest.webmanifest"];
+
+async function cacheShell() {
+  const cache = await caches.open(CACHE);
+  await Promise.all(
+    SHELL.map(async (path) => {
+      try {
+        const response = await fetch(new Request(path, { cache: "reload" }));
+        if (!response.ok) return false;
+        await cache.put(path, response);
+        return true;
+      } catch {
+        // A single unavailable route should not block the remaining app shell.
+        return false;
+      }
+    }),
+  );
+}
+
+async function cacheSuccessfulResponse(request, response) {
+  if (!response.ok) return;
+  try {
+    const cache = await caches.open(CACHE);
+    await cache.put(request, response.clone());
+  } catch {
+    // Cache storage is an enhancement; preserve the successful network response.
+  }
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(SHELL)).catch(() => {})
+    (async () => {
+      await cacheShell();
+      await self.skipWaiting();
+    })(),
   );
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+    (async () => {
+      const keys = await caches.keys().catch(() => []);
+      await Promise.all(
+        keys.filter((key) => key !== CACHE).map((key) => caches.delete(key).catch(() => false)),
+      );
+      await self.clients.claim();
+    })(),
   );
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
   const url = new URL(request.url);
-  if (url.origin !== self.location.origin) return; // don't cache cross-origin (fonts, ads)
+  if (url.origin !== self.location.origin) return; // Don't cache cross-origin fonts, analytics, or ads.
 
-  // Network-first for navigations, fall back to cache, then to home.
+  // Network-first for navigations, then the requested cached page, then the home shell.
   if (request.mode === "navigate") {
     event.respondWith(
-      fetch(request)
-        .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(request, copy)).catch(() => {});
-          return res;
-        })
-        .catch(() => caches.match(request).then((r) => r || caches.match("/")))
+      (async () => {
+        try {
+          const response = await fetch(request);
+          await cacheSuccessfulResponse(request, response);
+          return response;
+        } catch {
+          return (await caches.match(request)) || (await caches.match("/")) || Response.error();
+        }
+      })(),
     );
     return;
   }
 
   // Cache-first for same-origin static assets.
   event.respondWith(
-    caches.match(request).then((cached) =>
-      cached ||
-      fetch(request).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE).then((c) => c.put(request, copy)).catch(() => {});
-        return res;
-      }).catch(() => cached)
-    )
+    (async () => {
+      const cached = await caches.match(request);
+      if (cached) return cached;
+      try {
+        const response = await fetch(request);
+        await cacheSuccessfulResponse(request, response);
+        return response;
+      } catch {
+        return Response.error();
+      }
+    })(),
   );
 });

@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { BRISKET_TIMING_ARTICLE } from "../lib/brisket-timing-article.js";
 import { uniqueBySlug } from "../lib/collections.js";
-import { markdownToHtml } from "../lib/posts.js";
+import { getPost, markdownToHtml } from "../lib/posts.js";
 
 test("brisket timing guide answers the visible query with sourced planning ranges", async () => {
   const article = BRISKET_TIMING_ARTICLE;
@@ -77,6 +77,42 @@ test("generated Markdown escapes raw HTML and rejects unsafe link protocols", ()
     html,
     /href="https:\/\/example\.com\/guide\?q=smoke&amp;size=12"/,
   );
+});
+
+test("malformed legacy schema markup is escaped instead of partially sanitized", () => {
+  const html = markdownToHtml(
+    'Before <<script type="application/ld+json">{"name":"test"}</script> after',
+  );
+
+  assert.equal(html.includes("<script"), false);
+  assert.match(html, /&lt;&lt;script type=&quot;application\/ld\+json&quot;&gt;/);
+});
+
+test("legacy embedded schema never leaks into rendered guide FAQs", () => {
+  const guide = getPost("how-long-to-smoke-a-brisket");
+  assert.ok(guide);
+  assert.equal(guide.body.includes("application/ld+json"), false);
+  assert.equal(guide.faqs.some((faq) => faq.a.includes("application/ld+json")), false);
+  assert.equal(guide.faqs.some((faq) => faq.a.includes('"@context"')), false);
+});
+
+test("CRLF Markdown guides retain their visible FAQ answers", () => {
+  const guide = getPost("brisket-probe-tender-test-what-it-really-means-at-203f");
+  assert.ok(guide);
+  assert.ok(guide.faqs.length >= 3);
+  assert.ok(guide.faqs.every((faq) => faq.q && faq.a));
+});
+
+test("every restored Markdown guide has a useful direct-answer paragraph", async () => {
+  const files = (await readdir(new URL("../content/published/", import.meta.url)))
+    .filter((file) => file.endsWith(".md"));
+
+  for (const file of files) {
+    const slug = file.replace(/\.md$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, "");
+    const guide = getPost(slug);
+    assert.ok(guide?.answer.length >= 40, `${file} needs a substantive direct answer`);
+    assert.equal(guide.answer.includes("**"), false, `${file} leaked Markdown into its answer`);
+  }
 });
 
 test("guide collections keep one canonical card and route per slug", () => {

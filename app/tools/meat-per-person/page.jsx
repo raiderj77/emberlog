@@ -1,15 +1,15 @@
 import ToolShell from "@/components/ToolShell";
 import MeatPerPerson from "@/components/calc/MeatPerPerson";
 import { getTool } from "@/lib/tools";
+import { pageMetadata } from "@/lib/metadata";
 
 const t = getTool("meat-per-person");
-export const metadata = {
+export const metadata = pageMetadata({
   title: t.title,
   description: t.desc,
-  alternates: { canonical: "/tools/meat-per-person/" },
+  canonical: "/tools/meat-per-person/",
   keywords: t.keywords,
-  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/meat-per-person/" },
-};
+});
 
 const faqs = [
   { q: "How much pulled pork per person?", a: "About 1/3 to 1/2 pound cooked per adult. Pork shoulder yields roughly 50% after cooking, so buy about 1 pound of raw shoulder per person." },

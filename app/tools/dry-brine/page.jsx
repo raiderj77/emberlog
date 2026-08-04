@@ -1,15 +1,15 @@
 import ToolShell from "@/components/ToolShell";
 import DryBrine from "@/components/calc/DryBrine";
 import { getTool } from "@/lib/tools";
+import { pageMetadata } from "@/lib/metadata";
 
 const t = getTool("dry-brine");
-export const metadata = {
+export const metadata = pageMetadata({
   title: t.title,
   description: t.desc,
-  alternates: { canonical: "/tools/dry-brine/" },
+  canonical: "/tools/dry-brine/",
   keywords: t.keywords,
-  openGraph: { images: ["/og.png"], title: t.title, description: t.desc, url: "/tools/dry-brine/" },
-};
+});
 
 const faqs = [
   { q: "How much salt do I use to dry brine?", a: "About 0.5% of the meat's weight in salt is a reliable starting point, roughly 2-2.5 grams of kosher salt per pound. Weigh it, since salt brands differ a lot by volume." },

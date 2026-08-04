@@ -11,6 +11,18 @@ test("smoke-time results expose a browser print action", () => {
   assert.match(component, /window\.print\(\)/);
 });
 
+test("smoke-time rejects unsupported weights and past schedules instead of clamping", () => {
+  assert.doesNotMatch(component, /const safeWeight = clamp/);
+  assert.doesNotMatch(component, /setWeight\(next\.maxWeight\)/);
+  assert.match(component, /selected\.minWeight/);
+  assert.match(component, /min=\{minWeight\}/);
+  assert.match(component, /supported only from/);
+  assert.match(component, /type="date"/);
+  assert.match(component, /servingTime <= currentTime/);
+  assert.match(component, /startDate <= currentTime/);
+  assert.match(component, /role="alert"/);
+});
+
 test("print styles isolate the result and hide the print control", () => {
   assert.match(styles, /@media print/);
   assert.match(styles, /\[data-printable-results\]/);

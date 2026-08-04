@@ -40,3 +40,11 @@ test("only the validated category links appear after their complete tool guidanc
   assert.match(wood, /query="smoking wood chunks"/);
   assert.ok(wood.indexOf("Wood is a seasoning") < wood.indexOf("<AmazonCategoryLink"));
 });
+
+test("wood pairing mode controls expose state and meet the minimum touch target", () => {
+  const wood = read("components/calc/WoodPairing.jsx");
+  assert.match(wood, /role="group" aria-label="Pairing search mode"/);
+  assert.match(wood, /aria-pressed=\{mode === "meat"\}/);
+  assert.match(wood, /aria-pressed=\{mode === "wood"\}/);
+  assert.ok((wood.match(/min-h-11/g) || []).length >= 2);
+});

@@ -10,7 +10,8 @@ export default function PwaRegister() {
         /* registration failures are non-fatal */
       });
     };
-    window.addEventListener("load", onLoad);
+    if (document.readyState === "complete") onLoad();
+    else window.addEventListener("load", onLoad, { once: true });
     return () => window.removeEventListener("load", onLoad);
   }, []);
   return null;

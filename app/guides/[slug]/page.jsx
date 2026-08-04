@@ -2,15 +2,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SITE, absUrl } from "@/lib/site";
-import { ARTICLES, getArticle } from "@/lib/articles";
-import { getAllPosts, getPost } from "@/lib/posts";
-import { uniqueBySlug } from "@/lib/collections";
+import { getArticle } from "@/lib/articles";
+import { getPost } from "@/lib/posts";
+import { getAllGuides } from "@/lib/guides";
+import { compactDescription, compactTitle } from "@/lib/seo";
 import { getTool } from "@/lib/tools";
 import { Container, Breadcrumb, AnswerBox, FaqList } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
-  return uniqueBySlug(ARTICLES, getAllPosts()).map((article) => ({ slug: article.slug }));
+  return getAllGuides().map((article) => ({ slug: article.slug }));
 }
 
 export async function generateMetadata({ params }) {
@@ -18,18 +19,24 @@ export async function generateMetadata({ params }) {
   const a = getArticle(slug) ?? getPost(slug);
   if (!a) return {};
   return {
-    title: a.title,
-    description: a.description,
+    title: compactTitle(a.title),
+    description: compactDescription(a.description),
     alternates: { canonical: `/guides/${a.slug}/` },
     openGraph: {
       images: ["/og.png"],
       type: "article",
-      title: a.title,
-      description: a.description,
+      title: compactTitle(a.title, 65),
+      description: compactDescription(a.description),
       url: `/guides/${a.slug}/`,
-      publishedTime: a.updated,
+      ...(a.published && { publishedTime: a.published }),
       modifiedTime: a.updated,
       authors: [SITE.author],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: compactTitle(`${a.title} | ${SITE.name}`, 65),
+      description: compactDescription(a.description),
+      images: ["/og.png"],
     },
   };
 }
@@ -50,22 +57,36 @@ export default async function ArticlePage({ params }) {
   const a = getArticle(slug) ?? getPost(slug);
   if (!a) notFound();
 
-  const ALL = uniqueBySlug(ARTICLES, getAllPosts());
+  const ALL = getAllGuides();
   const idx = ALL.findIndex((x) => x.slug === a.slug);
   const next = ALL[(idx + 1) % ALL.length];
 
   const tool = a.tool ? getTool(a.tool) : null;
   const related = ALL.filter((x) => x.category === a.category && x.slug !== a.slug).slice(0, 3);
   const catLabel = CAT_LABELS[a.category] || "";
+  const safetySources = [
+    {
+      label: "USDA FSIS safe temperature chart",
+      href: "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+    },
+    {
+      label: "USDA FSIS food thermometer guidance",
+      href: "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+    },
+    ...(a.slug === "how-to-smoke-a-turkey" ? [{
+      label: "USDA turkey smoking table",
+      href: "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/turkey-alternate-routes-table",
+    }] : []),
+  ];
 
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: a.title,
     description: a.description,
-    datePublished: a.updated,
     dateModified: a.updated,
-    author: { "@type": "Person", name: SITE.author },
+    ...(a.published && { datePublished: a.published }),
+    author: { "@type": "Person", name: SITE.author, url: absUrl("/about/") },
     publisher: {
       "@type": "Organization",
       name: SITE.name,
@@ -73,6 +94,7 @@ export default async function ArticlePage({ params }) {
     },
     mainEntityOfPage: absUrl(`/guides/${a.slug}/`),
     image: absUrl("/og.png"),
+    citation: safetySources.map((source) => source.href),
   };
   const faqLd =
     a.faqs && a.faqs.length
@@ -147,9 +169,27 @@ export default async function ArticlePage({ params }) {
             </span>
           </div>
 
+          <div className="mt-5 rounded-lg border border-line bg-white p-4 text-sm leading-relaxed text-muted">
+            Safety claims are checked against primary USDA FSIS guidance. Time and texture targets are planning estimates, not safety endpoints. See our <Link href="/editorial-standards/" className="font-semibold text-ember-700 underline">editorial standards and correction process</Link>.
+          </div>
+
           <AnswerBox>{a.answer}</AnswerBox>
 
           <div className="prose-em" dangerouslySetInnerHTML={{ __html: a.body }} />
+
+          <section aria-labelledby="guide-sources" className="my-8 rounded-xl border border-line bg-white p-5">
+            <h2 id="guide-sources" className="font-display text-xl font-bold">Primary safety references</h2>
+            <ul className="mt-3 space-y-2 text-sm">
+              {safetySources.map((source) => (
+                <li key={source.href}>
+                  <a href={source.href} target="_blank" rel="noopener noreferrer" className="font-semibold text-ember-700 underline">
+                    {source.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-muted">Safety source set checked {SITE.contentReviewed}. Equipment operation and supervision defer to the manufacturer’s current instructions.</p>
+          </section>
 
           {tool && (
             <div className="my-8 rounded-xl border border-ember/30 bg-ember/5 p-5">
