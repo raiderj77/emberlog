@@ -79,6 +79,15 @@ test("generated Markdown escapes raw HTML and rejects unsafe link protocols", ()
   );
 });
 
+test("malformed legacy schema markup is escaped instead of partially sanitized", () => {
+  const html = markdownToHtml(
+    'Before <<script type="application/ld+json">{"name":"test"}</script> after',
+  );
+
+  assert.equal(html.includes("<script"), false);
+  assert.match(html, /&lt;&lt;script type=&quot;application\/ld\+json&quot;&gt;/);
+});
+
 test("legacy embedded schema never leaks into rendered guide FAQs", () => {
   const guide = getPost("how-long-to-smoke-a-brisket");
   assert.ok(guide);
