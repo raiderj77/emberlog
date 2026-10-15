@@ -87,7 +87,7 @@ export default function DonenessTemps() {
       ))}
 
       <p className="rounded-lg border border-line bg-paper p-4 text-xs leading-relaxed text-muted">
-        Safe minimum internal temperatures are from the USDA Food Safety and Inspection Service (FSIS). BBQ texture targets are common-practice goals, not food-safety numbers. This is general information, not professional food-safety advice; always follow <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart" target="_blank" rel="noopener noreferrer" className="font-semibold underline">current USDA guidance</a> and confirm the minimum with a food thermometer before serving.
+        Safe minimum internal temperatures are from the USDA Food Safety and Inspection Service (FSIS). BBQ texture targets are common-practice goals, not food-safety numbers. This is general information, not professional food-safety advice; always follow <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart" target="_blank" rel="noopener noreferrer" className="font-semibold underline">current USDA guidance</a> and confirm the minimum with a food thermometer before serving. The <a href="https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures" target="_blank" rel="noopener noreferrer" className="font-semibold underline">FoodSafety.gov chart</a> includes bison, goat, rabbit and venison (source reviewed November 21, 2024; checked October 15, 2026).
       </p>
 
       <AmazonCategoryLink label="instant-read meat thermometers" query="instant read meat thermometer" />

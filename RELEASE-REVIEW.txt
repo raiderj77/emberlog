@@ -1,0 +1,23 @@
+PitmasterLog verified corrections, October 15, 2026
+
+Scope: temperature-chart completeness, honest calculator methodology, and one contextual smoke-planner affiliate link. Preserve creator disclosure, free tools, browser-local cook data, consent gating and disabled ads. No AdSense review or new article publication.
+
+Primary responsibility: product/software engineering with food-safety source verification, privacy and release review. Self-review; no professional food-safety certification claimed.
+
+Sources checked October 15, 2026:
+https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures
+Federal chart last reviewed November 21, 2024. Bison/goat whole cuts:145F plus3min; ground:160F; rabbit/venison:160F. Existing poultry/ham/holding safeguards retained.
+https://foodbuyingguide.fns.usda.gov/files/Reports/USDA_FBG_Section1_MeatsAndMeatAlternatesYieldTable.pdf
+PDF pages10 and39: specific trimmed brisket and Boston-butt purchased cuts versus cooked lean outputs. Reference comparisons only; calculator planning factors unchanged.
+https://www.mortonsalt.com/shop/kosher-salt/morton-coarse-kosher-salt/
+https://www.mortonsalt.com/shop/table-salt/morton-table-salt/
+Manufacturer labels:1.2g and1.5g per quarter-teaspoon, respectively. Derived volume conversions remain approximate. Diamond Crystal is retained as an existing estimate, not newly verified manufacturer evidence. Generic fine-sea-salt equivalence removed.
+https://github.com/vercel/next.js/releases/tag/v16.3.8
+https://github.com/advisories/GHSA-wq5f-xc86-pv6w
+https://github.com/advisories/GHSA-68fv-2mgg-jv7q
+Current production dependency audit required Next16.3.8, sharp0.35.5 and source-map-js1.2.2. Reuse PR40; retain original React/lucide versions. Build-tool-only audit findings remain in glob/selector parsers processing repository inputs; no unsafe major-version audit fix applied. Production audit:0 vulnerabilities. Dev dependency PR41 remains separate.
+
+No numeric affiliate-link limit is claimed to be a Google approval rule. No AdSense approval promise. FSIS direct source was blocked403 during review, so no new FSIS-specific smoking/fuel assertions added.
+
+Release checks:52 tests passed, ESLint passed; production build and browser verification required before merge. Required GitHub Build and available security checks must pass at exact head. Deployment target:emberlog / prj_cdhtDWQ6TjDHHtxeXEjXTL7F8Npo, team_UJgX6d1ueSUoJV6ajfanKJJJ, pitmasterlog.com.
+Prior production:dpl_GPQBQHFucXgV3UnKEnahSvCjrv5U at802fb93a2b9e74d2a9c5844151db28b987f482ab. Rollback candidate only; it contains older audited dependencies, so prefer a reviewed forward correction when practical.

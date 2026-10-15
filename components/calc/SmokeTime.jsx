@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { Clock, AlertTriangle, Printer } from "lucide-react";
 import { SMOKE_TIMES } from "@/lib/woods";
-import GearForCook from "@/components/GearForCook";
+import AmazonCategoryLink from "@/components/AmazonCategoryLink";
 
 const hm = (minutes) => {
   if (!Number.isFinite(minutes)) return "Enter a valid weight";
@@ -148,7 +148,7 @@ export default function SmokeTime({ defaultProtein, defaultWeight } = {}) {
         Print results
       </button>
 
-      <GearForCook protein={selected.protein} />
+      <AmazonCategoryLink label="instant-read meat thermometers" query="instant read meat thermometer" />
     </div>
   );
 }
