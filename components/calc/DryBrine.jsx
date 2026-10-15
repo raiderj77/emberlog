@@ -6,7 +6,7 @@ import AmazonCategoryLink from "@/components/AmazonCategoryLink";
 import { boundedNumber } from "@/lib/inputValidation";
 
 // Approximate grams of salt per teaspoon by brand.
-const SALT = { "Diamond Crystal kosher": 2.8, "Morton kosher": 4.8, "Table / fine sea": 6.0 };
+const SALT = { "Diamond Crystal kosher": 2.8, "Morton kosher": 4.8, "Morton table salt": 6.0 };
 
 export default function DryBrine() {
   const [weight, setWeight] = useState(12);
@@ -63,13 +63,18 @@ export default function DryBrine() {
 
       <div className="rounded-lg border border-line bg-paper p-4 text-sm text-muted">
         <p className="font-medium text-ink">Timing</p>
-        <p className="mt-1">Keep the refrigerator at 40°F or colder. Use a rack over a rimmed pan on a low shelf below ready-to-eat food, contain raw-meat drips, and sanitize contact surfaces. Typical windows: 1-12 hr for chops and chicken pieces, 12-24 hr for a whole chicken or roast, and 24-48 hr for turkey. More detail in the <Link href="/guides/dry-brine-guide/" className="font-semibold text-ember-600 underline">dry brine guide</Link>.</p>
+        <p className="mt-1">Keep the refrigerator at 40°F or colder. Use a rack over a rimmed pan on a low shelf below ready-to-eat food, contain raw-meat drips, and sanitize contact surfaces. Culinary planning windows (not food-safety limits): 1-12 hr for chops and chicken pieces, 12-24 hr for a whole chicken or roast, and 24-48 hr for turkey. More detail in the <Link href="/guides/dry-brine-guide/" className="font-semibold text-ember-600 underline">dry brine guide</Link>.</p>
       </div>
 
       <div className="flex gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
         <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
         <p>Salt amounts are for flavor. Always cook meat to its <Link href="/tools/doneness-temps/" className="font-semibold underline">USDA safe minimum temperature</Link> regardless of brining.</p>
       </div>
+
+      <section className="rounded-lg border border-line bg-paper p-4 text-sm text-muted" aria-labelledby="salt-method">
+        <h2 id="salt-method" className="font-semibold text-ink">Salt weight and volume</h2>
+        <p className="mt-2">Salt grams = meat grams × salt percentage ÷ 100. The <a href="https://www.mortonsalt.com/shop/kosher-salt/morton-coarse-kosher-salt/" className="font-semibold underline" target="_blank" rel="noopener noreferrer">Morton kosher label</a> lists 1.2 g per 1/4 tsp (about 4.8 g per tsp); the <a href="https://www.mortonsalt.com/shop/table-salt/morton-table-salt/" className="font-semibold underline" target="_blank" rel="noopener noreferrer">Morton table salt label</a> lists 1.5 g per 1/4 tsp (about 6.0 g per tsp). Labels checked October 15, 2026. Diamond Crystal kosher uses the existing approximate 2.8 g per tsp estimate. These volume estimates are not universal across brands, crystal sizes or measuring methods; weigh salt when possible.</p>
+      </section>
 
       <AmazonCategoryLink
         label="digital gram scales for kitchen use"

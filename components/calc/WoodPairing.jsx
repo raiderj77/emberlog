@@ -66,7 +66,7 @@ export default function WoodPairing() {
 
       <div className="flex gap-3 rounded-lg border border-line bg-paper p-4 text-sm text-muted">
         <Trees className="h-5 w-5 shrink-0 text-ember" />
-        <p>Wood is a seasoning, aim for thin blue smoke, not billowing white. Blend strong woods with neutral oak to tame them. Full guide: <Link href="/guides/best-wood-for-smoking/" className="font-semibold text-ember-600 underline">Best Wood for Smoking</Link>.</p>
+        <p>Wood is a seasoning. These flavor pairings are culinary preferences, not food-safety rules. Aim for thin blue smoke, not billowing white. Blend strong woods with neutral oak to tame them. Follow your smoker manufacturer’s fuel and fire-safety instructions. Full guide: <Link href="/guides/best-wood-for-smoking/" className="font-semibold text-ember-600 underline">Best Wood for Smoking</Link>.</p>
       </div>
 
       <AmazonCategoryLink

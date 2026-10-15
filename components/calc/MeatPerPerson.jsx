@@ -66,10 +66,16 @@ export default function MeatPerPerson() {
         ) : (
           <>
             <div className="mt-1 font-display text-3xl font-bold text-ember">{rawLbs.toFixed(1)} lb raw</div>
-            <div className="mt-1 text-sm text-muted">≈ {cookedLbs.toFixed(1)} lb cooked · this cut yields about {Math.round(cut.yield * 100)}% after cooking, so buy extra to cover the loss.</div>
+            <div className="mt-1 text-sm text-muted">≈ {cookedLbs.toFixed(1)} lb cooked · planning yield for this cut is about {Math.round(cut.yield * 100)}% after cooking, so buy extra to cover the loss.</div>
           </>
         )}
       </div>}
+
+      <section className="rounded-lg border border-line bg-paper p-4 text-sm text-muted" aria-labelledby="yield-method">
+        <h2 id="yield-method" className="font-semibold text-ink">How these estimates work</h2>
+        <p className="mt-2">Portions, half portions for kids, the 40% reduction for heavy sides, rack counts and cooking yields are catering planning conventions, not measured results for your cook. For example, 0.5 lb cooked per adult divided by a 50% planning yield means 1 lb raw per adult. Trim, bones, moisture loss and retained juices change the result.</p>
+        <p className="mt-2">For comparison, the <a href="https://foodbuyingguide.fns.usda.gov/files/Reports/USDA_FBG_Section1_MeatsAndMeatAlternatesYieldTable.pdf" className="font-semibold underline" target="_blank" rel="noopener noreferrer">USDA Food Buying Guide</a> reports cooked lean-meat yields of 46% for boneless brisket with 1/4-inch trim, 52% for bone-in Boston butt with 1/4-inch trim, and 60% for boneless Boston butt with 1/4-inch trim. These are specific purchased cuts and trimmed lean-meat outputs, not a guarantee of backyard BBQ yield. The calculator retains its approximate BBQ planning factors. Source checked October 15, 2026.</p>
+      </section>
 
       <div className="flex gap-3 rounded-lg border border-line bg-paper p-4 text-sm text-muted">
         <AlertTriangle className="h-5 w-5 shrink-0 text-ember" />

@@ -75,6 +75,25 @@ test("temperature table preserves rest, poultry, ham, casserole, and holding rul
   assert.doesNotMatch(wholeCuts.bbqTarget, /125|135/);
 });
 
+test("game and bison/goat retain their distinct federal minimums", () => {
+  const game = TEMPS.find((group) => group.group === "Game").items;
+  assert.equal(game.length, 1);
+  assert.match(game[0].name, /Rabbit and venison.*wild or farm-raised/);
+  assert.equal(game[0].safeMin, 160);
+  assert.equal(game[0].rest, 0);
+  const whole = TEMPS.find((group) => group.group.includes("whole cuts"));
+  assert.match(whole.group, /bison.*goat/);
+  assert.deepEqual([whole.items[0].safeMin, whole.items[0].rest], [145, 3]);
+  const ground = TEMPS.find((group) => group.group === "Ground meats");
+  for (const item of ground.items.filter((item) => item.category === "ground")) {
+    assert.match(item.name, /bison.*goat/);
+    assert.equal(item.safeMin, 160);
+  }
+  const guide = article("meat-internal-temperature-chart");
+  assert.match(guide.body, /Rabbit and venison.*160°F/);
+  assert.match(guide.body, /foodsafety.gov/);
+});
+
 test("published guidance rejects unsafe ambient prep and unverified holding", () => {
   const articles = read("lib/articles.js");
   const smokePlanner = read("components/calc/SmokeTime.jsx");
