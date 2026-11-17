@@ -150,3 +150,23 @@ test("doneness checker distinguishes invalid input from an empty field", () => {
   assert.match(checker, /thermometer-reading-error/);
   assert.match(checker, /role="alert"/);
 });
+
+
+test("turkey timing guide clarifies refrigeration, ambient heat, and measured holding", () => {
+  const guide = getAllGuides().find((entry) => entry.slug === "how-long-to-smoke-a-turkey");
+  const text = JSON.stringify(guide);
+  assert.match(text, /refrigerate leftovers within two hours of cooking, or within one hour if exposed to surrounding air above 90°F/);
+  assert.match(text, /90°F limit is the air temperature, not the turkey temperature/);
+  assert.match(text, /Carving or serving does not restart this deadline/);
+  assert.match(text, /clean, shallow containers/);
+  assert.match(text, /refrigerate promptly at 40°F or colder/);
+  assert.match(text, /Small portions can go into the refrigerator while still hot/);
+  assert.match(text, /do not wait for the turkey to reach room temperature or 90°F/);
+  assert.match(text, /verify the food stays at 140°F or above with a food thermometer/);
+  assert.doesNotMatch(text, /within that same two-hour window|stays above 140°F for about an hour|hold it tented and wrapped/);
+  assert.match(text, /cdc.gov\/food-safety\/foods\/holiday-turkey.html/);
+  assert.match(text, /ask.fsis.usda.gov\/article\/Can-you-put-hot-food-in-the-refrigerator/);
+  for (const faq of guide.faqs) {
+    if (faq.a.includes("165°F")) assert.match(faq.a, /breast.*thigh.*wing/);
+  }
+});
